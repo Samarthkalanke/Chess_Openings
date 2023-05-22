@@ -17,34 +17,54 @@
     <h3>Question 1:</h3>
     <p>How would you describe your playstyle?</p>
     <form>
-      <input type="radio" name="q1" value="0"> Madrid (40 points)<br>
-      <input type="radio" name="q1" value="0"> London (30 points)<br>
-      <input type="radio" name="q1" value="0"> Rome (20 points)<br>
-      <input type="radio" name="q1" value="3"> Paris (10 points)<br>
+      <input type="radio" name="q1" value="40"> Aggressive and attacking <br>
+      <input type="radio" name="q1" value="30"> Solid and Positional <br>
+      <input type="radio" name="q1" value="20"> Flexible and Adaptable  <br>
+      <input type="radio" name="q1" value="10"> Tactical and Dynamic <br>
     </form>
   </div>
   
   <div class="question">
     <h3>Question 2:</h3>
-    <p>Which planet is known as the Red Planet?</p>
+    <p>Which piece do you enjoy developing early in the game?</p>
     <form>
-      <input type="radio" name="q2" value="0"> Venus (40 points)<br>
-      <input type="radio" name="q2" value="0"> Jupiter (30 points)<br>
-      <input type="radio" name="q2" value="0"> Saturn (20 points)<br>
-      <input type="radio" name="q2" value="5"> Mars (10 points)<br>
+      <input type="radio" name="q2" value="40"> Knight <br>
+      <input type="radio" name="q2" value="30"> Bishop <br>
+      <input type="radio" name="q2" value="20"> Pawn that isn't E or D pawn two squares <br>
+      <input type="radio" name="q2" value="10"> Pawn that is E or D pawn two squares <br>
     </form>
   </div>
   
   <div class="question">
     <h3>Question 3:</h3>
-    <p>Who painted the Mona Lisa?</p>
+    <p>DO you prefer open or closed positions</p>
     <form>
-      <input type="radio" name="q3" value="0"> Vincent van Gogh (40 points)<br>
-      <input type="radio" name="q3" value="0"> Pablo Picasso (20 points)<br>
-      <input type="radio" name="q3" value="0"> Claude Monet (30 points)<br>
-      <input type="radio" name="q3" value="2"> Leonardo da Vinci (10 points)<br>
+      <input type="radio" name="q3" value="40"> I like open positions with more tactical opportunities.<br>
+      <input type="radio" name="q3" value="30"> I prefer closed positions with strategic maneuvering.<br>
+      <input type="radio" name="q3" value="20"> I enjoy a mix of both.<br>
     </form>
   </div>
+
+  <div class="question">
+    <h3>Question 4:</h3>
+    <p>Which of the following pawn structures appeals to you the most?</p>
+    <form>
+      <input type="radio" name="q2" value="40"> Isolated pawn structure <br>
+      <input type="radio" name="q2" value="30"> Pawn chains <br>
+      <input type="radio" name="q2" value="20"> Pawn majorities <br>
+      <input type="radio" name="q2" value="10"> Pawn islands <br>
+    </form>
+  </div>
+
+  <div class="question">
+    <h3>Question 5:</h3>
+    <p>Do you have a preferred piece or setup that you like to play in the early stages of the game?</p>
+    <form>
+      <input type="radio" name="q2" value="40"> I like to focus on a particular piece or setup and build my strategy around it.  <br>
+      <input type="radio" name="q2" value="30"> I'm comfortable with different setups and don't have a specific preference. <br>
+    </form>
+  </div>
+
   
   <button onclick="calculateScore()">Submit</button>
   
