@@ -1,6 +1,6 @@
 ## Scillian (Point Val)
 If you got this point value on the test this is where you belong, the quiz showed that this is the opening that you should study for black. 
-You are a very structual player that wants to get a better position and likes to read about openings alot. You like to play against higher than average elo players and like to study chess openings also this is my personal favorite so I officially love you.!! 
+You are a very structual player that wants to get a better position and likes to read about openings alot. You like to play against higher than average elo players and like to study chess openings also this is my personal favorite so I officially love you and GothamChess is your daddy!! 
 
 ## Scilian Overview
 > There are many lines for the scilian this is just the main line that people use or think of when they think of the scilian opening in chess. Other lines and information are in youtube videos below. Read the tutorials and watch the videos to learn the other lines. And mabye there will be a puzzles part where you can test this knowledge. 
@@ -155,3 +155,10 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
+
+
+## Scillian Tutorial 
+> # Youtube Vids(GothamChess and Others)
+    > Gotham Chess 10 min overview https://www.youtube.com/watch?v=qM4e7g2RukI
+    > Gotham Chess Beth Harmon stuff https://www.youtube.com/watch?v=65VWIFlc4C4
+    > Simplify Chess openings https://simplifychess.com/sicilian-defense/
