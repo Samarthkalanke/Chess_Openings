@@ -14,39 +14,151 @@
 
 ## Housing Assignment
 
-| Family | Attending | Assignment | Count | Children | Arrive | Depart
-| --- | --- | --- | --- | --- | --- | --- |
-| Frank, Judith | Yes | Dogwood Primary | 2 | None | Mon | Sat |
-| | | | | |
-| Johnner, Lora | Yes | ? | 3 | Shay (14) | Mon | Sat |
-| Trent, Yuri | Yes | ? | 5 | Amelia (8), Cruz (6), Gavi (1) | Mon | Sat |
-| Corey | Yes | ? | 1 | - | Mon | Fri |
-| Tiernan | Yes | ? | 1 | - | Mon | Sat |
-| Claire | Yes | ? | 2 | - | Mon | Sat |
-| | | | | |
-|Lisa-Anne, Chris | Yes | ? | 2 | None | Mon | Sat |
-|Brianna, Forest | Yes | ? | 6 | Sayla (6), Tundra (4), Alora (2), Keelynn (1) | Mon | Sat |
-|Kira, Spencer | Yes | ? | 5 | Georgianna (6), James (5), Arabella (2), Hunter (NB) | Mon | Sat |
-|Ethan, Layne | Yes | ? | 6 | William (6), Lily (4), Adeline (2), Eleanor (1) | Mon | Sat |
-| Jarom | Yes | ? | 1 | None | Mon | Sat |
-| Braden | Yes | ? | 1 | None | Mon | Sat |
-| | | | | |
-| Mathew | Yes | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Sherri, Drumond | Yes | ? | 2 | None | Mon | Sat |
-| Taylor | Yes | ? | 1 | None | Unk | Unk |
-| Jake | Yes | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Angela, Tye | Yes | ? | 2 | None | Mon | Sat |
-| Bryce | Yes | ? | 1 | None | Unk | Unk |
-| Aspen, Brandon | Yes | ? | 2 | None | Unk | Unk |
-| Calem | Yes | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Jared, Janice | Yes | ? | 4 | Kelle (15), Naya (13) | Mon | Sat |
-| | | | | |
-| John, Melanie | Yes | ? | 4 | Connor (17), Sophia (14) | Mon | Sat |
-| Isaiah | No | ? | 1 | None | Unk | Unk |
-| | | | | |
-| Jeremiah, Melissa | Yes | ? | 3 | Liam (11) | Mon | Sat |
-| Annalyce | Yes | ? | 1 | None | Unk | Unk |
-| Peyton | Yes | ? | 1 | None | Unk | Unk |
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sicilian Opening Chess</title>
+    <style>
+        /* Define CSS styles for the chess board */
+        .chess-board {
+            display: flex;
+            flex-wrap: wrap;
+            width: 400px;
+            height: 400px;
+        }
+        .chess-square {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: black;
+        }
+        .white-square {
+            background-color: #f0d9b5;
+        }
+        .black-square {
+            background-color: #b58863;
+            color: white;
+        }
+        /* Styles for arrow buttons */
+        .arrow-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .arrow-button {
+            padding: 5px 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chessBoard"></div>
+    <div class="arrow-buttons">
+        <button class="arrow-button" onclick="prevMove()">&lt;</button>
+        <button class="arrow-button" onclick="nextMove()">&gt;</button>
+    </div>
+    <script>
+        // Define the chess pieces icons
+        var pieces = {
+            "wp1": "♙",
+            "wp2": "♙",
+            "wp3": "♙",
+            "wp4": "♙",
+            "wp5": "♙",
+            "wp6": "♙",
+            "wp7": "♙",
+            "wp8": "♙",
+            "wr1": "♖",
+            "wr2": "♖",
+            "wn1": "♘",
+            "wn2": "♘",
+            "wb1": "♗",
+            "wb2": "♗",
+            "wk1": "♔",
+            "wq1": "♕",
+            "bp1": "♟",
+            "bp2": "♟",
+            "bp3": "♟",
+            "bp4": "♟",
+            "bp5": "♟",
+            "bp6": "♟",
+            "bp7": "♟",
+            "bp8": "♟",
+            "br1": "♜",
+            "br2": "♜",
+            "bn1": "♞",
+            "bn2": "♞",
+            "bb1": "♝",
+            "bb2": "♝",
+            "bk1": "♚",
+            "bq1": "♛"
+        };
+        // Array of moves for the Sicilian opening
+        var sicilianMoves = [
+            [5, 2, "wp7"],
+            [5, 4, "wp7"],
+            [6, 4, "bp7"],
+            [3, 4, "bp2"],
+            [6, 3, "bn2"],
+            [2, 5, "wn1"],
+            [7, 4, "bq1"],
+            [4, 6, "bb2"],
+            [6, 6, "bp6"],
+            [1, 3, "wb1"],
+            [7, 6, "bn1"],
+            [5, 6, "wp5"],
+            [5, 5, "wp5"],
+            [2, 3, "wn2"],
+            [6, 7, "bk1"]
+        ];
+        var currentMoveIndex = 0;
+        var chessBoard = document.getElementById("chessBoard");
+        // Initialize the chess board
+        function initChessBoard() {
+            var chessHTML = "";
+            for (var row = 1; row <= 8; row++) {
+                for (var col = 1; col <= 8; col++) {
+                    var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
+                    var piece = getPieceIcon(row, col);
+                    chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
+                }
+            }
+            chessBoard.innerHTML = chessHTML;
+        }
+        // Get the piece icon for a given position
+        function getPieceIcon(row, col) {
+            var piece = "   ";
+            for (var i = 0; i < sicilianMoves.length; i++) {
+                var move = sicilianMoves[i];
+                if (move[0] === row && move[1] === col) {
+                    piece = move[2];
+                    break;
+                }
+            }
+            if (pieces.hasOwnProperty(piece)) {
+                return pieces[piece];
+            }
+            return "";
+        }
+        // Go to the previous move
+        function prevMove() {
+            if (currentMoveIndex > 0) {
+                currentMoveIndex--;
+                initChessBoard();
+            }
+        }
+        // Go to the next move
+        function nextMove() {
+            if (currentMoveIndex < sicilianMoves.length - 1) {
+                currentMoveIndex++;
+                initChessBoard();
+            }
+        }
+        // Initialize the chess board on page load
+        initChessBoard();
+    </script>
+</body>
+</html>
