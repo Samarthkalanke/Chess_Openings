@@ -54,45 +54,64 @@ You are a very structual player that wants to get a better position and likes to
     <script>
         // Define the chess pieces icons
         var pieces = {
-            "wp": "♙",
-            "wr": "♖",
-            "wn": "♘",
-            "wb": "♗",
-            "wk": "♔",
-            "wq": "♕",
-            "bp": "♟",
-            "br": "♜",
-            "bn": "♞",
-            "bb": "♝",
-            "bk": "♚",
-            "bq": "♛"
+            "wp1": "♙",
+            "wp2": "♙",
+            "wp3": "♙",
+            "wp4": "♙",
+            "wp5": "♙",
+            "wp6": "♙",
+            "wp7": "♙",
+            "wp8": "♙",
+            "wr1": "♖",
+            "wr2": "♖",
+            "wn1": "♘",
+            "wn2": "♘",
+            "wb1": "♗",
+            "wb2": "♗",
+            "wk1": "♔",
+            "wq1": "♕",
+            "bp1": "♟",
+            "bp2": "♟",
+            "bp3": "♟",
+            "bp4": "♟",
+            "bp5": "♟",
+            "bp6": "♟",
+            "bp7": "♟",
+            "bp8": "♟",
+            "br1": "♜",
+            "br2": "♜",
+            "bn1": "♞",
+            "bn2": "♞",
+            "bb1": "♝",
+            "bb2": "♝",
+            "bk1": "♚",
+            "bq1": "♛"
         };
         // Array of moves for the Sicilian opening
         var sicilianMoves = [
-            [1, 7, "wp"],
-            [3, 7, "wp"],
-            [6, 7, "bp"],
-            [1, 4, "bp"],
-            [2, 6, "bn"],
-            [0, 1, "wn"],
-            [6, 4, "bq"],
-            [5, 6, "bb"],
-            [6, 6, "bp"],
-            [0, 2, "wb"],
-            [7, 6, "bn"],
-            [4, 6, "wp"],
-            [4, 5, "wp"],
-            [0, 5, "wn"],
-            [7, 0, "bk"]
+            [5, 2, "wp7"],
+            [5, 4, "wp7"],
+            [6, 4, "bp7"],
+            [3, 4, "bp2"],
+            [6, 3, "bn2"],
+            [2, 5, "wn1"],
+            [7, 4, "bq1"],
+            [4, 6, "bb2"],
+            [6, 6, "bp6"],
+            [1, 3, "wb1"],
+            [7, 6, "bn1"],
+            [5, 6, "wp5"],
+            [5, 5, "wp5"],
+            [2, 3, "wn2"],
+            [6, 7, "bk1"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
-        var board = createChessBoard();
         // Initialize the chess board
         function initChessBoard() {
             var chessHTML = "";
-            for (var row = 0; row < 8; row++) {
-                for (var col = 0; col < 8; col++) {
+            for (var row = 1; row <= 8; row++) {
+                for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     var piece = getPieceIcon(row, col);
                     chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
@@ -100,20 +119,16 @@ You are a very structual player that wants to get a better position and likes to
             }
             chessBoard.innerHTML = chessHTML;
         }
-        // Create an 8x8 chess board
-        function createChessBoard() {
-            var board = [];
-            for (var row = 0; row < 8; row++) {
-                board[row] = [];
-                for (var col = 0; col < 8; col++) {
-                    board[row][col] = "";
-                }
-            }
-            return board;
-        }
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
-            var piece = board[row][col];
+            var piece = "   ";
+            for (var i = 0; i < sicilianMoves.length; i++) {
+                var move = sicilianMoves[i];
+                if (move[0] === row && move[1] === col) {
+                    piece = move[2];
+                    break;
+                }
+            }
             if (pieces.hasOwnProperty(piece)) {
                 return pieces[piece];
             }
@@ -123,31 +138,15 @@ You are a very structual player that wants to get a better position and likes to
         function prevMove() {
             if (currentMoveIndex > 0) {
                 currentMoveIndex--;
-                updateBoard();
+                initChessBoard();
             }
         }
         // Go to the next move
         function nextMove() {
             if (currentMoveIndex < sicilianMoves.length - 1) {
                 currentMoveIndex++;
-                updateBoard();
+                initChessBoard();
             }
-        }
-        // Update the chess board based on the current move
-        function updateBoard() {
-            resetBoard();
-            for (var i = 0; i <= currentMoveIndex; i++) {
-                var move = sicilianMoves[i];
-                var row = move[0];
-                var col = move[1];
-                var piece = move[2];
-                board[row][col] = piece;
-            }
-            initChessBoard();
-        }
-        // Reset the chess board
-        function resetBoard() {
-            board = createChessBoard();
         }
         // Initialize the chess board on page load
         initChessBoard();
