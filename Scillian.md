@@ -7,7 +7,6 @@ You are a very structual player that wants to get a better position and likes to
 
 ## Scilian Main line
 
-<!DOCTYPE html>
 <html>
 <head>
     <title>Sicilian Opening Chess</title>
@@ -15,7 +14,6 @@ You are a very structual player that wants to get a better position and likes to
         /* Define CSS styles for the chess board */
         .chess-board {
             display: flex;
-            flex-wrap: wrap;
             width: 400px;
             height: 400px;
         }
