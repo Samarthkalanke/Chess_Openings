@@ -106,17 +106,29 @@ You are a very structual player that wants to get a better position and likes to
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
+        //function initChessBoard() {
+        //    var chessHTML = "";
+        //    for (var row = 1; row <= 8; row++) {
+        //        for (var col = 1; col <= 8; col++) {
+        //            var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
+        //            var piece = getPieceIcon(row, col);
+        //            chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
+        //        }
+        //    }
+        //    chessBoard.innerHTML = chessHTML;
+        //}
+        // Initialize the chess board
         function initChessBoard() {
-            var chessHTML = "<table>";
+            var chessHTML = `<table>`;
             for (var row = 1; row <= 8; row++) {
-                chessHTML += "<tr>"
+                chessHTML += `<tr>`
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     var piece = getPieceIcon(row, col);
-                    chessHTML += '<td class="chess-square ${squareClass}">${piece}</td>';
+                    chessHTML += `<td class="chess-square ${squareClass}">${piece}</td>`;
                 }
             }
-            chessHTML +='</table>'; 
+            chessHTML +=`</table>`; 
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
