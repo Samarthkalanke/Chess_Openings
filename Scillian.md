@@ -107,14 +107,16 @@ You are a very structual player that wants to get a better position and likes to
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
         function initChessBoard() {
-            var chessHTML = "";
+            var chessHTML = "<table>";
             for (var row = 1; row <= 8; row++) {
+                chessHTML += "<tr>"
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     var piece = getPieceIcon(row, col);
-                    chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
+                    chessHTML += '<td class="chess-square ${squareClass}">${piece}</td>';
                 }
             }
+            chessHTML +='</table>'; 
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
