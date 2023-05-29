@@ -87,9 +87,9 @@ You are a very structual player that wants to get a better position and likes to
         };
         // Array of initial positions for the chess pieces
         var initialPositions = [
-            [1, 1, "wr1"], [1, 2, "wn1"], [1, 3, "wb1"], [1, 4, "wq1"], [1, 5, "wk1"], [1, 6, "wb2"], [1, 7, "wn2"], [1, 8, "wr2"],
+            [1, 1, "br1"], [1, 2, "wn1"], [1, 3, "wb1"], [1, 4, "wq1"], [1, 5, "wk1"], [1, 6, "wb2"], [1, 7, "wn2"], [1, 8, "wr2"],
             [2, 1, "wp1"], [2, 2, "wp2"], [2, 3, "wp3"], [2, 4, "wp4"], [2, 5, "wp5"], [2, 6, "wp6"], [2, 7, "wp7"], [2, 8, "wp8"],
-            [8, 1, "br1"], [8, 2, "bn1"], [8, 3, "bb1"], [8, 4, "bq1"], [8, 5, "bk1"], [8, 6, "bb2"], [8, 7, "bn2"], [8, 8, "br2"],
+            [8, 1, "wr1"], [8, 2, "bn1"], [8, 3, "bb1"], [8, 4, "bq1"], [8, 5, "bk1"], [8, 6, "bb2"], [8, 7, "bn2"], [8, 8, "br2"],
             [7, 1, "bp1"], [7, 2, "bp2"], [7, 3, "bp3"], [7, 4, "bp4"], [7, 5, "bp5"], [7, 6, "bp6"], [7, 7, "bp7"], [7, 8, "bp8"]
         ];
         var currentMoveIndex = 0;
