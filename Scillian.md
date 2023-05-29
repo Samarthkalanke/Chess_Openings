@@ -7,6 +7,31 @@ You are a very structual player that wants to get a better position and likes to
 
 <html>
 <head>
+    <body>
+    <script>
+    // ...
+    // Get the piece icon for a given position
+    function getPieceIcon(row, col) {
+        for (var i = 0; i < initialPositions.length; i++) {
+            var position = initialPositions[i];
+            if (position[0] === row && position[1] === col) {
+                var piece = position[2];
+                if (pieces.hasOwnProperty(piece)) {
+                    if (piece.startsWith("w")) {
+                        // Change white pieces to black
+                        return pieces[piece.replace("w", "b")];
+                    } else if (piece.startsWith("b")) {
+                        // Change black pieces to white
+                        return pieces[piece.replace("b", "w")];
+                    }
+                }
+                break;
+            }
+        }
+        return "";
+    }
+    // ...
+    </script>
     <title>Sicilian Opening Chess</title>
     <style>
         /* Define CSS styles for the chess board */
@@ -41,31 +66,6 @@ You are a very structual player that wants to get a better position and likes to
         }
     </style>
 </head>
-<body>
-    <script>
-    // ...
-    // Get the piece icon for a given position
-    function getPieceIcon(row, col) {
-        for (var i = 0; i < initialPositions.length; i++) {
-            var position = initialPositions[i];
-            if (position[0] === row && position[1] === col) {
-                var piece = position[2];
-                if (pieces.hasOwnProperty(piece)) {
-                    if (piece.startsWith("w")) {
-                        // Change white pieces to black
-                        return pieces[piece.replace("w", "b")];
-                    } else if (piece.startsWith("b")) {
-                        // Change black pieces to white
-                        return pieces[piece.replace("b", "w")];
-                    }
-                }
-                break;
-            }
-        }
-        return "";
-    }
-    // ...
-    </script>
     <div id="chessBoard"></div>
     <div class="arrow-buttons">
         <button class="arrow-button" onclick="prevMove()">&lt;</button>
