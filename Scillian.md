@@ -85,38 +85,15 @@ You are a very structual player that wants to get a better position and likes to
             "bk1": "♚",
             "bq1": "♛"
         };
-        // Array of moves for the Sicilian opening
-        var sicilianMoves = [
-            [5, 2, "wp7"],
-            [5, 4, "wp7"],
-            [6, 4, "bp7"],
-            [3, 4, "bp2"],
-            [6, 3, "bn2"],
-            [2, 5, "wn1"],
-            [7, 4, "bq1"],
-            [4, 6, "bb2"],
-            [6, 6, "bp6"],
-            [1, 3, "wb1"],
-            [7, 6, "bn1"],
-            [5, 6, "wp5"],
-            [5, 5, "wp5"],
-            [2, 3, "wn2"],
-            [6, 7, "bk1"]
+        // Array of initial positions for the chess pieces
+        var initialPositions = [
+            [1, 1, "wr1"], [1, 2, "wn1"], [1, 3, "wb1"], [1, 4, "wq1"], [1, 5, "wk1"], [1, 6, "wb2"], [1, 7, "wn2"], [1, 8, "wr2"],
+            [2, 1, "wp1"], [2, 2, "wp2"], [2, 3, "wp3"], [2, 4, "wp4"], [2, 5, "wp5"], [2, 6, "wp6"], [2, 7, "wp7"], [2, 8, "wp8"],
+            [8, 1, "br1"], [8, 2, "bn1"], [8, 3, "bb1"], [8, 4, "bq1"], [8, 5, "bk1"], [8, 6, "bb2"], [8, 7, "bn2"], [8, 8, "br2"],
+            [7, 1, "bp1"], [7, 2, "bp2"], [7, 3, "bp3"], [7, 4, "bp4"], [7, 5, "bp5"], [7, 6, "bp6"], [7, 7, "bp7"], [7, 8, "bp8"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
-        // Initialize the chess board
-        //function initChessBoard() {
-        //    var chessHTML = "";
-        //    for (var row = 1; row <= 8; row++) {
-        //        for (var col = 1; col <= 8; col++) {
-        //            var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
-        //            var piece = getPieceIcon(row, col);
-        //            chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
-        //        }
-        //    }
-        //    chessBoard.innerHTML = chessHTML;
-        //}
         // Initialize the chess board
         function initChessBoard() {
             var chessHTML = `<table>`;
@@ -134,16 +111,15 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
-            var piece = "   ";
-            for (var i = 0; i < sicilianMoves.length; i++) {
-                var move = sicilianMoves[i];
-                if (move[0] === row && move[1] === col) {
-                    piece = move[2];
+            for (var i = 0; i < initialPositions.length; i++) {
+                var position = initialPositions[i];
+                if (position[0] === row && position[1] === col) {
+                    var piece = position[2];
+                    if (pieces.hasOwnProperty(piece)) {
+                        return pieces[piece];
+                    }
                     break;
                 }
-            }
-            if (pieces.hasOwnProperty(piece)) {
-                return pieces[piece];
             }
             return "";
         }
@@ -156,7 +132,7 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < sicilianMoves.length - 1) {
+            if (currentMoveIndex < initialPositions.length - 1) {
                 currentMoveIndex++;
                 initChessBoard();
             }
@@ -166,4 +142,5 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
+
 
