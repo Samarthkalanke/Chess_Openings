@@ -7,31 +7,6 @@ You are a very structual player that wants to get a better position and likes to
 
 <html>
 <head>
-    <body>
-    <script>
-    // ...
-    // Get the piece icon for a given position
-    function getPieceIcon(row, col) {
-        for (var i = 0; i < initialPositions.length; i++) {
-            var position = initialPositions[i];
-            if (position[0] === row && position[1] === col) {
-                var piece = position[2];
-                if (pieces.hasOwnProperty(piece)) {
-                    if (piece.startsWith("w")) {
-                        // Change white pieces to black
-                        return pieces[piece.replace("w", "b")];
-                    } else if (piece.startsWith("b")) {
-                        // Change black pieces to white
-                        return pieces[piece.replace("b", "w")];
-                    }
-                }
-                break;
-            }
-        }
-        return "";
-    }
-    // ...
-    </script>
     <title>Sicilian Opening Chess</title>
     <style>
         /* Define CSS styles for the chess board */
@@ -66,6 +41,7 @@ You are a very structual player that wants to get a better position and likes to
         }
     </style>
 </head>
+<body>
     <div id="chessBoard"></div>
     <div class="arrow-buttons">
         <button class="arrow-button" onclick="prevMove()">&lt;</button>
@@ -109,10 +85,10 @@ You are a very structual player that wants to get a better position and likes to
         };
         // Array of initial positions for the chess pieces
         var initialPositions = [
-            [1, 1, "br1"], [1, 2, "wn1"], [1, 3, "wb1"], [1, 4, "wq1"], [1, 5, "wk1"], [1, 6, "wb2"], [1, 7, "wn2"], [1, 8, "wr2"],
-            [2, 1, "wp1"], [2, 2, "wp2"], [2, 3, "wp3"], [2, 4, "wp4"], [2, 5, "wp5"], [2, 6, "wp6"], [2, 7, "wp7"], [2, 8, "wp8"],
-            [8, 1, "wr1"], [8, 2, "bn1"], [8, 3, "bb1"], [8, 4, "bq1"], [8, 5, "bk1"], [8, 6, "bb2"], [8, 7, "bn2"], [8, 8, "br2"],
-            [7, 1, "bp1"], [7, 2, "bp2"], [7, 3, "bp3"], [7, 4, "bp4"], [7, 5, "bp5"], [7, 6, "bp6"], [7, 7, "bp7"], [7, 8, "bp8"]
+            [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
+            [2, 1, "bp1"], [2, 2, "bp2"], [2, 3, "bp3"], [2, 4, "bp4"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [2, 8, "bp8"],
+            [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"],
+            [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 5, "wp5"], [7, 6, "wp6"], [7, 7, "wp7"], [7, 8, "wp8"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
@@ -164,5 +140,3 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
-
-
