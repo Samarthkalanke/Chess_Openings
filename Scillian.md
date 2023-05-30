@@ -67,7 +67,9 @@ You are a very structual player that wants to get a better position and likes to
             "wk1": "♔",
             "wq1": "♕"
         };
-        var blackpieces = {"bp1": "♟",
+
+        var blackpieces = {
+            "bp1": "♟",
             "bp2": "♟",
             "bp3": "♟",
             "bp4": "♟",
@@ -82,29 +84,27 @@ You are a very structual player that wants to get a better position and likes to
             "bb1": "♝",
             "bb2": "♝",
             "bk1": "♚",
-            "bq1": "♛"};
+            "bq1": "♛"
+        };
+
         for (var key in whitepieces) {
             if (whitepieces.hasOwnProperty(key)) {
-                 var item = whitepieces[key];
-                    var value = item.value;
-                    var white = item.class;
-                     // Apply the CSS class to the element or do whatever you need
-                    var element = document.getElementById(key);
-                    element.innerHTML = value;
-                    element.classList.add(white);
+                var value = whitepieces[key];
+                var element = document.getElementById(key);
+                element.innerHTML = value;
+                element.classList.add("white-piece");
+            }
         }
+
         for (var key in blackpieces) {
             if (blackpieces.hasOwnProperty(key)) {
-                var item = blackpieces[key];
-                    var value = item.value;
-                    var black = item.class;
-                // Apply the CSS class to the element or do whatever you need
-                    var element = document.getElementById(key);
-                    element.innerHTML = value;
-                    element.classList.add(black);
-  }
-}
-}
+                var value = blackpieces[key];
+                var element = document.getElementById(key);
+                element.innerHTML = value;
+                element.classList.add("black-piece");
+            }
+        }
+
         // Array of initial positions for the chess pieces
         var initialPositions = [
             [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
@@ -112,24 +112,27 @@ You are a very structual player that wants to get a better position and likes to
             [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 5, "wp5"], [7, 6, "wp6"], [7, 7, "wp7"], [7, 8, "wp8"],
             [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
         ];
+
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
+
         // Initialize the chess board
         function initChessBoard() {
             var chessHTML = `<table>`;
             for (var row = 1; row <= 8; row++) {
-                chessHTML += `<tr>`
+                chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
-                    if (row === 8) squareClass = "black-square"; // Make the bottom side black
+                    if (row === 1) squareClass = "black-square"; // Make the bottom side black
                     var piece = getPieceIcon(row, col);
-                    chessHTML += `<td><div class="chess-square ${squareClass}">${piece}</div></td>`;
+                    chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
                 chessHTML += `</tr>`;
             }
-            chessHTML +=`</table>`; 
+            chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
+
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
             for (var i = 0; i < initialPositions.length; i++) {
@@ -147,6 +150,7 @@ You are a very structual player that wants to get a better position and likes to
             }
             return "";
         }
+
         // Go to the previous move
         function prevMove() {
             if (currentMoveIndex > 0) {
@@ -154,6 +158,7 @@ You are a very structual player that wants to get a better position and likes to
                 initChessBoard();
             }
         }
+
         // Go to the next move
         function nextMove() {
             if (currentMoveIndex < initialPositions.length - 1) {
@@ -161,8 +166,10 @@ You are a very structual player that wants to get a better position and likes to
                 initChessBoard();
             }
         }
+
         // Initialize the chess board on page load
         initChessBoard();
     </script>
 </body>
 </html>
+
