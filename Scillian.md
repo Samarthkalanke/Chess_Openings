@@ -85,22 +85,6 @@ You are a very structual player that wants to get a better position and likes to
             "bk1": "♚",
             "bq1": "♛"
         };
-        for (var key in whitepieces) {
-            if (whitepieces.hasOwnProperty(key)) {
-                var value = whitepieces[key];
-                var element = document.getElementById(key);
-                element.innerHTML = value;
-                element.classList.add("white-piece");
-            }
-        }
-        for (var key in blackpieces) {
-            if (blackpieces.hasOwnProperty(key)) {
-                var value = blackpieces[key];
-                var element = document.getElementById(key);
-                element.innerHTML = value;
-                element.classList.add("black-piece");
-            }
-        }
         // Array of initial positions for the chess pieces
         var initialPositions = [
             [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
@@ -162,4 +146,3 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
-
