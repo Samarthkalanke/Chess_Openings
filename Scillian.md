@@ -83,6 +83,28 @@ You are a very structual player that wants to get a better position and likes to
             "bb2": "♝",
             "bk1": "♚",
             "bq1": "♛"};
+        for (var key in whitepieces) {
+            if (whitepieces.hasOwnProperty(key)) {
+                 var item = whitepieces[key];
+                    var value = item.value;
+                    var white = item.class;
+                     // Apply the CSS class to the element or do whatever you need
+                    var element = document.getElementById(key);
+                    element.innerHTML = value;
+                    element.classList.add(white);
+        }
+        for (var key in blackpieces) {
+            if (blackpieces.hasOwnProperty(key)) {
+                var item = blackpieces[key];
+                    var value = item.value;
+                    var black = item.class;
+                // Apply the CSS class to the element or do whatever you need
+                    var element = document.getElementById(key);
+                    element.innerHTML = value;
+                    element.classList.add(black);
+  }
+}
+}
         // Array of initial positions for the chess pieces
         var initialPositions = [
             [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
