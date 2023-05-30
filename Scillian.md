@@ -48,7 +48,7 @@ You are a very structual player that wants to get a better position and likes to
     </style>
 </head>
 <body>
-    <div id="chessBoard"></div>
+    <div id="chessboard"></div>
     <div class="arrow-buttons">
         <button class="arrow-button" onclick="prevMove()">&lt;</button>
         <button class="arrow-button" onclick="nextMove()">&gt;</button>
@@ -111,7 +111,7 @@ You are a very structual player that wants to get a better position and likes to
             element.classList.add("black");
         });
         var currentMoveIndex = 0;
-        var chessBoard = document.getElementById("chessBoard");
+        var chessBoard = document.getElementById("chessboard");
         // Initialize the chess board
         function initChessBoard() {
             var chessHTML = `<table>`;
