@@ -49,7 +49,7 @@ You are a very structual player that wants to get a better position and likes to
     </div>
     <script>
         // Define the chess pieces icons
-        var pieces = {
+        var whitepieces = {
             "wp1": "♙",
             "wp2": "♙",
             "wp3": "♙",
@@ -65,8 +65,9 @@ You are a very structual player that wants to get a better position and likes to
             "wb1": "♗",
             "wb2": "♗",
             "wk1": "♔",
-            "wq1": "♕",
-            "bp1": "♟",
+            "wq1": "♕"
+        };
+        var blackpieces = {"bp1": "♟",
             "bp2": "♟",
             "bp3": "♟",
             "bp4": "♟",
@@ -81,8 +82,7 @@ You are a very structual player that wants to get a better position and likes to
             "bb1": "♝",
             "bb2": "♝",
             "bk1": "♚",
-            "bq1": "♛"
-        };
+            "bq1": "♛"};
         // Array of initial positions for the chess pieces
         var initialPositions = [
             [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
