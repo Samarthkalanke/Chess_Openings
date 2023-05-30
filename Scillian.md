@@ -136,8 +136,11 @@ You are a very structual player that wants to get a better position and likes to
                 var position = initialPositions[i];
                 if (position[0] === row && position[1] === col) {
                     var piece = position[2];
-                    if (pieces.hasOwnProperty(piece)) {
-                        return pieces[piece];
+                    if (blackpieces.hasOwnProperty(piece)) {
+                        return blackpieces[piece];
+                    }
+                    if (whitepieces.hasOwnProperty(piece)) {
+                        return whitepieces[piece];
                     }
                     break;
                 }
