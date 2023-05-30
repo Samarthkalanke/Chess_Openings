@@ -10,6 +10,12 @@ You are a very structual player that wants to get a better position and likes to
     <title>Sicilian Opening Chess</title>
     <style>
         /* Define CSS styles for the chess board */
+        .black {
+            color: black;
+        }
+        .white {
+            color: white;
+        }
         .chess-board {
             display: flex;
             width: 400px;
@@ -92,6 +98,18 @@ You are a very structual player that wants to get a better position and likes to
             [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 5, "wp5"], [7, 6, "wp6"], [7, 7, "wp7"], [7, 8, "wp8"],
             [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
         ];
+        // Iterate over whitepieces and add the white class to each corresponding element
+Object.keys(whitepieces).forEach(function(pieceId) {
+  var element = document.getElementById(pieceId);
+  element.innerHTML = whitepieces[pieceId];
+  element.classList.add("white");
+});
+// Iterate over blackpieces and add the black class to each corresponding element
+Object.keys(blackpieces).forEach(function(pieceId) {
+  var element = document.getElementById(pieceId);
+  element.innerHTML = blackpieces[pieceId];
+  element.classList.add("black");
+});
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
