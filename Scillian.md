@@ -91,6 +91,7 @@ You are a very structual player that wants to get a better position and likes to
             [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
         ];
         var currentMoveIndex = 0;
+        var maxMoveIndex = 14; // Maximum move index to display (0-based)
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
         function initChessBoard() {
@@ -99,7 +100,6 @@ You are a very structual player that wants to get a better position and likes to
                 chessHTML += `<tr>`
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
-                    if (row === 8) squareClass = "black-square"; // Make the bottom side black
                     var piece = getPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}">${piece}</div></td>`;
                 }
@@ -131,7 +131,7 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < initialPositions.length - 1) {
+            if (currentMoveIndex < maxMoveIndex && currentMoveIndex < initialPositions.length - 1) {
                 currentMoveIndex++;
                 initChessBoard();
             }
@@ -141,3 +141,4 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
+
