@@ -18,7 +18,6 @@ You are a very structual player that wants to get a better position and likes to
         }
         .chess-board {
             display: flex;
-            flex-wrap: wrap;
             width: 400px;
             height: 400px;
         }
@@ -57,59 +56,87 @@ You are a very structual player that wants to get a better position and likes to
     <script>
         // Define the chess pieces icons
         var whitepieces = {
-            "P": "♙", "R": "♖", "N": "♘", "B": "♗", "Q": "♕", "K": "♔"
+            "wp1": "♙",
+            "wp2": "♙",
+            "wp3": "♙",
+            "wp4": "♙",
+            "wp5": "♙",
+            "wp6": "♙",
+            "wp7": "♙",
+            "wp8": "♙",
+            "wr1": "♖",
+            "wn1": "♘",
+            "wb1": "♗",
+            "wk1": "♔",
+            "wq1": "♕",
+            "wp9": "♙",
+            "wp10": "♙",
+            "wp11": "♙",
+            "bp1": "♟",
+            "bp2": "♟",
+            "bp3": "♟",
+            "bp4": "♟",
+            "bp5": "♟",
+            "bp6": "♟",
+            "bp7": "♟",
+            "bp8": "♟",
+            "br1": "♜",
+            "bn1": "♞",
+            "bb1": "♝",
+            "bk1": "♚",
+            "bq1": "♛",
+            "bp9": "♟",
+            "bp10": "♟",
+            "bp11": "♟"
         };
-        var blackpieces = {
-            "p": "♟", "r": "♜", "n": "♞", "b": "♝", "q": "♛", "k": "♚"
-        };
-        // Array of moves in the Sicilian Defense
-        var moves = [
-            "e2e4", "c7c5",
-            "g1f3", "d7d6",
-            "d2d4", "g8f6",
-            "c2c4", "e7e6",
-            "b1c3", "a7a6",
-            "f1e2", "d8c7",
-            "e1g1", "e8g8",
-            "d1d2", "b8c6"
+        // Array of initial positions for the chess pieces
+        var initialPositions = [
+            [1, 2, "wn1"],
+            [2, 3, "bp3"],
+            [2, 5, "bp5"],
+            [2, 6, "bp6"],
+            [3, 2, "wp2"],
+            [3, 3, "wp3"],
+            [3, 4, "wp4"],
+            [3, 6, "wp6"],
+            [3, 7, "wp7"],
+            [3, 8, "wp8"],
+            [4, 3, "wp9"],
+            [4, 4, "bp4"],
+            [4, 5, "wp10"],
+            [5, 4, "bp11"],
+            [5, 5, "wp11"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
         function initChessBoard() {
-            chessBoard.innerHTML = "";
-            var chessHTML = "";
-            for (var row = 8; row >= 1; row--) {
+            var chessHTML = `<table>`;
+            for (var row = 1; row <= 8; row++) {
+                chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     var piece = getPieceIcon(row, col);
-                    chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
+                    chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
+                chessHTML += `</tr>`;
             }
+            chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
-            var moveIndex = Math.floor(currentMoveIndex / 2);
-            if (row === getRowFromAlgebraic(moves[moveIndex].substring(2, 4)) &&
-                col === getColFromAlgebraic(moves[moveIndex].substring(2, 4))) {
-                return whitepieces.hasOwnProperty(moves[moveIndex][0]) ?
-                    whitepieces[moves[moveIndex][0]] : blackpieces[moves[moveIndex][0].toLowerCase()];
-            }
-            if (row === getRowFromAlgebraic(moves[moveIndex].substring(4, 6)) &&
-                col === getColFromAlgebraic(moves[moveIndex].substring(4, 6))) {
-                return whitepieces.hasOwnProperty(moves[moveIndex][1]) ?
-                    whitepieces[moves[moveIndex][1]] : blackpieces[moves[moveIndex][1].toLowerCase()];
+            for (var i = 0; i < initialPositions.length; i++) {
+                var position = initialPositions[i];
+                if (position[0] === row && position[1] === col) {
+                    var piece = position[2];
+                    if (whitepieces.hasOwnProperty(piece)) {
+                        return whitepieces[piece];
+                    }
+                    break;
+                }
             }
             return "";
-        }
-        // Convert algebraic notation to row index (1-8)
-        function getRowFromAlgebraic(algebraic) {
-            return 9 - parseInt(algebraic[1]);
-        }
-        // Convert algebraic notation to column index (1-8)
-        function getColFromAlgebraic(algebraic) {
-            return algebraic.charCodeAt(0) - 96;
         }
         // Go to the previous move
         function prevMove() {
@@ -120,7 +147,7 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < moves.length * 2 - 1) {
+            if (currentMoveIndex < initialPositions.length - 1) {
                 currentMoveIndex++;
                 initChessBoard();
             }
