@@ -121,10 +121,10 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Array of scillian positions for the chess pieces
         var scillianPositions = [
-            [1, 1, "br1"], [2, 4, "bn1"], [1, 3, "bb1"], [2, 3, "bq1"], [1, 5, "bk1"], [2, 5, "bb2"], [3, 6, "bn2"], [1, 8, "br2"],
-            [3, 1, "bp1"], [5, 2, "bp2"], [3, 4, "bp4"], [3, 5, "bp5"], [2, 6, "bp6"], [5, 6, "bp7"], [3, 8, "bp8"],
-            [6, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [5, 5, "wp5"], [5, 7, "wp7"], [5, 8, "wp8"],
-            [8, 4, "wr1"], [6, 3, "wn1"], [7, 5, "wb1"], [6, 6, "wq1"], [8, 3, "wk1"], [7, 6, "wb2"], [5, 4, "wn2"], [8, 8, "wr2"]
+            [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [3, 2, "bq1"], [1, 5, "bk1"], [2, 8, "bb2"], [3, 6, "bn2"], [1, 8, "br2"],
+            [2, 1, "bp1"], [2, 2, "bp2"], [3, 3, "bp3"], [4, 4, "bp4"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [3, 8, "bp8"],
+            [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [5, 4, "wp4"], [3, 5, "wp5"], [6, 6, "wp6"], [4, 7, "wp7"], [4, 8, "wp8"],
+            [8, 1, "wr1"], [6, 3, "wn1"], [5, 6, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
         ];
         //var currentMoveIndex = 0;
         chessBoard = document.getElementById("chessBoard");
