@@ -56,56 +56,27 @@ You are a very structual player that wants to get a better position and likes to
     <script>
         // Define the chess pieces icons
         var whitepieces = {
-            "wp1": "♙",
-            "wp2": "♙",
-            "wp3": "♙",
-            "wp4": "♙",
-            "wp5": "♙",
-            "wp6": "♙",
-            "wp7": "♙",
-            "wp8": "♙",
-            "wr1": "♖",
-            "wn1": "♘",
-            "wb1": "♗",
-            "wk1": "♔",
-            "wq1": "♕",
-            "wp9": "♙",
-            "wp10": "♙",
-            "wp11": "♙",
-            "bp1": "♟",
-            "bp2": "♟",
-            "bp3": "♟",
-            "bp4": "♟",
-            "bp5": "♟",
-            "bp6": "♟",
-            "bp7": "♟",
-            "bp8": "♟",
-            "br1": "♜",
-            "bn1": "♞",
-            "bb1": "♝",
-            "bk1": "♚",
-            "bq1": "♛",
-            "bp9": "♟",
-            "bp10": "♟",
-            "bp11": "♟"
+            "wp1": "♙", "wp2": "♙", "wp3": "♙", "wp4": "♙",
+            "wp5": "♙", "wp6": "♙", "wp7": "♙", "wp8": "♙",
+            "wr1": "♖", "wn1": "♘", "wb1": "♗", "wq1": "♕",
+            "wk1": "♔", "wb2": "♗", "wn2": "♘", "wr2": "♖"
         };
-        // Array of initial positions for the chess pieces
-        var initialPositions = [
-            [1, 2, "wn1"],
-            [2, 3, "bp3"],
-            [2, 5, "bp5"],
-            [2, 6, "bp6"],
-            [3, 2, "wp2"],
-            [3, 3, "wp3"],
-            [3, 4, "wp4"],
-            [3, 6, "wp6"],
-            [3, 7, "wp7"],
-            [3, 8, "wp8"],
-            [4, 3, "wp9"],
-            [4, 4, "bp4"],
-            [4, 5, "wp10"],
-            [5, 4, "bp11"],
-            [5, 5, "wp11"]
+        var blackpieces = {
+            "bp1": "♟", "bp2": "♟", "bp3": "♟", "bp4": "♟",
+            "bp5": "♟", "bp6": "♟", "bp7": "♟", "bp8": "♟",
+            "br1": "♜", "bn1": "♞", "bb1": "♝", "bq1": "♛",
+            "bk1": "♚", "bb2": "♝", "bn2": "♞", "br2": "♜"
+        };
+        // Array of moves in the Accelerated Dragon opening
+        var moves = [
+            ["c2", "c4"], ["e7", "e6"],
+            ["g1", "f3"], ["c7", "c5"],
+            ["d2", "d4"], ["c5", "d4"],
+            ["f3", "d4"], ["g8", "f6"],
+            ["b1", "c3"], ["d7", "d6"],
+            ["e2", "e4"], ["b8", "c6"],
+            ["f1", "c4"], ["e8", "g8"],
+            ["d1", "d2"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
@@ -126,14 +97,19 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
-            for (var i = 0; i < initialPositions.length; i++) {
-                var position = initialPositions[i];
-                if (position[0] === row && position[1] === col) {
-                    var piece = position[2];
-                    if (whitepieces.hasOwnProperty(piece)) {
-                        return whitepieces[piece];
-                    }
-                    break;
+            for (var i = 0; i < moves.length; i++) {
+                var move = moves[i];
+                var fromSquare = move[0];
+                var toSquare = move[1];
+                var fromRow = 8 - parseInt(fromSquare[1]);
+                var fromCol = fromSquare.charCodeAt(0) - 97 + 1;
+                var toRow = 8 - parseInt(toSquare[1]);
+                var toCol = toSquare.charCodeAt(0) - 97 + 1;
+                if (fromRow === row && fromCol === col) {
+                    return whitepieces.hasOwnProperty(fromSquare) ? whitepieces[fromSquare] : blackpieces[fromSquare];
+                }
+                if (toRow === row && toCol === col) {
+                    return whitepieces.hasOwnProperty(toSquare) ? whitepieces[toSquare] : blackpieces[toSquare];
                 }
             }
             return "";
@@ -147,7 +123,7 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < initialPositions.length - 1) {
+            if (currentMoveIndex < moves.length) {
                 currentMoveIndex++;
                 initChessBoard();
             }
@@ -157,3 +133,4 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
+
