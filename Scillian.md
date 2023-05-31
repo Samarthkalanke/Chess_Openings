@@ -117,7 +117,7 @@ You are a very structual player that wants to get a better position and likes to
             chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
-        // Array of initial positions for the chess pieces
+        // Array of scillian positions for the chess pieces
         var scillianPositions = [
             [1, 1, "br1"], [2, 4, "bn1"], [1, 3, "bb1"], [2, 3, "bq1"], [1, 5, "bk1"], [2, 5, "bb2"], [3, 6, "bn2"], [1, 8, "br2"],
             [3, 1, "bp1"], [5, 2, "bp2"], [3, 4, "bp4"], [3, 5, "bp5"], [2, 6, "bp6"], [5, 6, "bp7"], [3, 8, "bp8"],
@@ -134,7 +134,7 @@ You are a very structual player that wants to get a better position and likes to
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     //if (row === 1) squareClass = "black-square"; // Make the bottom side black
-                    var piece = getPieceIcon(row, col);
+                    var piece = getScillianPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
                 chessHTML += `</tr>`;
@@ -144,6 +144,23 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
+            for (var i = 0; i < scillianPositions.length; i++) {
+                var position = scillianPositions[i];
+                if (position[0] === row && position[1] === col) {
+                    var piece = position[2];
+                    if (blackpieces.hasOwnProperty(piece)) {
+                        return blackpieces[piece];
+                    }
+                    if (whitepieces.hasOwnProperty(piece)) {
+                        return whitepieces[piece];
+                    }
+                    break;
+                }
+            }
+            return "";
+        }
+         // Get the piece icon for a given position
+        function getScillianPieceIcon(row, col) {
             for (var i = 0; i < initialPositions.length; i++) {
                 var position = initialPositions[i];
                 if (position[0] === row && position[1] === col) {
