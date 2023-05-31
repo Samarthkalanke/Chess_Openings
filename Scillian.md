@@ -160,7 +160,7 @@ You are a very structual player that wants to get a better position and likes to
             }
         }
         // Initialize the chess board on page load
-        initChessBoard();
+        window.onload = initChessBoard;
     </script>
 </body>
 </html>
