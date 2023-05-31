@@ -5,6 +5,7 @@ You are a very structual player that wants to get a better position and likes to
 ## Scilian Overview
 > There are many lines for the scilian this is just the main line that people use or think of when they think of the scilian opening in chess. Other lines and information are in youtube videos below. Read the tutorials and watch the videos to learn the other lines. And mabye there will be a puzzles part where you can test this knowledge. 
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>Sicilian Opening Chess</title>
@@ -137,24 +138,14 @@ You are a very structual player that wants to get a better position and likes to
         function prevMove() {
             if (currentMoveIndex > 0) {
                 currentMoveIndex--;
-                updateBoard();
+                initChessBoard();
             }
         }
         // Go to the next move
         function nextMove() {
             if (currentMoveIndex < initialPositions.length - 1) {
                 currentMoveIndex++;
-                updateBoard();
-            }
-        }
-        // Update the chess board
-        function updateBoard() {
-            initChessBoard(); // Reinitialize the chess board
-            for (var i = 0; i <= currentMoveIndex; i++) {
-                var move = initialPositions[i];
-                var pieceId = move[2];
-                var element = document.getElementById(pieceId);
-                element.classList.add("black", "white"); // Add both classes to show the piece
+                initChessBoard();
             }
         }
         // Initialize the chess board on page load
