@@ -10,12 +10,17 @@ You are a very structual player that wants to get a better position and likes to
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Caro-Kann Opening Chess</title>
+    <title>Sicilian Opening Chess</title>
     <style>
         /* Define CSS styles for the chess board */
+        .black {
+            color: black;
+        }
+        .white {
+            color: white;
+        }
         .chess-board {
             display: flex;
-            flex-wrap: wrap;
             width: 400px;
             height: 400px;
         }
@@ -26,14 +31,12 @@ You are a very structual player that wants to get a better position and likes to
             justify-content: center;
             align-items: center;
             font-size: 30px;
-            color: black;
         }
         .white-square {
             background-color: #f0d9b5;
         }
         .black-square {
             background-color: #b58863;
-            color: white;
         }
         /* Styles for arrow buttons */
         .arrow-buttons {
@@ -55,7 +58,7 @@ You are a very structual player that wants to get a better position and likes to
     </div>
     <script>
         // Define the chess pieces icons
-        var pieces = {
+        var whitepieces = {
             "wp1": "♙",
             "wp2": "♙",
             "wp3": "♙",
@@ -71,7 +74,9 @@ You are a very structual player that wants to get a better position and likes to
             "wb1": "♗",
             "wb2": "♗",
             "wk1": "♔",
-            "wq1": "♕",
+            "wq1": "♕"
+        };
+        var blackpieces = {
             "bp1": "♟",
             "bp2": "♟",
             "bp3": "♟",
@@ -89,50 +94,87 @@ You are a very structual player that wants to get a better position and likes to
             "bk1": "♚",
             "bq1": "♛"
         };
-        // Array of moves for the Caro-Kann main line
-        var caroKannMoves = [
-            [5, 2, "wp7"],
-            [5, 4, "wp7"],
-            [6, 3, "wn2"],
-            [3, 5, "bp2"],
-            [6, 2, "wb2"],
-            [1, 3, "wp1"],
-            [3, 3, "bp4"],
-            [4, 3, "wp4"],
-            [4, 4, "bp4"],
-            [3, 4, "wp3"],
-            [4, 5, "bp3"],
-            [3, 6, "wn1"],
-            [2, 6, "wp2"],
-            [3, 2, "bn1"],
-            [1, 4, "bp1"]
+        // Array of initial positions for the chess pieces
+        var initialPositions = [
+            [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
+            [2, 1, "bp1"], [2, 2, "bp2"], [2, 3, "bp3"], [2, 4, "bp4"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [2, 8, "bp8"],
+            [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 5, "wp5"], [7, 6, "wp6"], [7, 7, "wp7"], [7, 8, "wp8"],
+            [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
         function initChessBoard() {
-            var chessHTML = "";
+            var chessHTML = `<table>`;
             for (var row = 1; row <= 8; row++) {
+                chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
+                    //if (row === 1) squareClass = "black-square"; // Make the bottom side black
                     var piece = getPieceIcon(row, col);
-                    chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
+                    chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
+                chessHTML += `</tr>`;
             }
+            chessHTML += `</table>`;
+            chessBoard.innerHTML = chessHTML;
+        }
+        // Array of scillian positions for the chess pieces
+        var scillianPositions = [
+            [1, 1, "br1"], [2, 4, "bn1"], [1, 3, "bb1"], [2, 3, "bq1"], [1, 5, "bk1"], [2, 5, "bb2"], [3, 6, "bn2"], [1, 8, "br2"],
+            [3, 1, "bp1"], [5, 2, "bp2"], [3, 4, "bp4"], [3, 5, "bp5"], [2, 6, "bp6"], [5, 6, "bp7"], [3, 8, "bp8"],
+            [6, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [5, 5, "wp5"], [5, 7, "wp7"], [5, 8, "wp8"],
+            [8, 4, "wr1"], [6, 3, "wn1"], [7, 5, "wb1"], [6, 6, "wq1"], [8, 3, "wk1"], [7, 6, "wb2"], [5, 4, "wn2"], [8, 8, "wr2"]
+        ];
+        //var currentMoveIndex = 0;
+        chessBoard = document.getElementById("chessBoard");
+        // Initialize the chess board
+        function scillianChessBoard() {
+            var chessHTML = `<table>`;
+            for (var row = 1; row <= 8; row++) {
+                chessHTML += `<tr>`;
+                for (var col = 1; col <= 8; col++) {
+                    var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
+                    //if (row === 1) squareClass = "black-square"; // Make the bottom side black
+                    var piece = getScillianPieceIcon(row, col);
+                    chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
+                }
+                chessHTML += `</tr>`;
+            }
+            chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
-        function getPieceIcon(row, col) {
-            var piece = "   ";
-            for (var i = 0; i < caroKannMoves.length; i++) {
-                var move = caroKannMoves[i];
-                if (move[0] === row && move[1] === col) {
-                    piece = move[2];
+        function getScillianPieceIcon(row, col) {
+            for (var i = 0; i < scillianPositions.length; i++) {
+                var position = scillianPositions[i];
+                if (position[0] === row && position[1] === col) {
+                    var piece = position[2];
+                    if (blackpieces.hasOwnProperty(piece)) {
+                        return blackpieces[piece];
+                    }
+                    if (whitepieces.hasOwnProperty(piece)) {
+                        return whitepieces[piece];
+                    }
                     break;
                 }
             }
-            if (pieces.hasOwnProperty(piece)) {
-                return pieces[piece];
+            return "";
+        }
+         // Get the piece icon for a given position
+        function getPieceIcon(row, col) {
+            for (var i = 0; i < initialPositions.length; i++) {
+                var position = initialPositions[i];
+                if (position[0] === row && position[1] === col) {
+                    var piece = position[2];
+                    if (blackpieces.hasOwnProperty(piece)) {
+                        return blackpieces[piece];
+                    }
+                    if (whitepieces.hasOwnProperty(piece)) {
+                        return whitepieces[piece];
+                    }
+                    break;
+                }
             }
             return "";
         }
@@ -145,16 +187,18 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < caroKannMoves.length - 1) {
-                currentMoveIndex++;
-                initChessBoard();
-            }
+           // if (currentMoveIndex < initialPositions.length - 1) {
+           //     currentMoveIndex++;
+                scillianChessBoard();
+               // initChessBoard();
+           // }
         }
         // Initialize the chess board on page load
         initChessBoard();
     </script>
 </body>
 </html>
+
 
 ## Caro-Khan Tutorial 
 > # Youtube Vids(GothamChess and Others)
