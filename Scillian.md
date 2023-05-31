@@ -168,11 +168,11 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < initialPositions.length - 1) {
-                currentMoveIndex++;
+           // if (currentMoveIndex < initialPositions.length - 1) {
+           //     currentMoveIndex++;
                 scillianChessBoard();
                // initChessBoard();
-            }
+           // }
         }
         // Initialize the chess board on page load
         initChessBoard();
