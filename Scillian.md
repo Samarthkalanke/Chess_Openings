@@ -108,7 +108,32 @@ You are a very structual player that wants to get a better position and likes to
                 chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
-                    if (row === 1) squareClass = "black-square"; // Make the bottom side black
+                    //if (row === 1) squareClass = "black-square"; // Make the bottom side black
+                    var piece = getPieceIcon(row, col);
+                    chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
+                }
+                chessHTML += `</tr>`;
+            }
+            chessHTML += `</table>`;
+            chessBoard.innerHTML = chessHTML;
+        }
+        // Array of initial positions for the chess pieces
+        var scillianPositions = [
+            [1, 1, "br1"], [2, 4, "bn1"], [1, 3, "bb1"], [2, 3, "bq1"], [1, 5, "bk1"], [2, 5, "bb2"], [3, 6, "bn2"], [1, 8, "br2"],
+            [3, 1, "bp1"], [5, 2, "bp2"], [3, 4, "bp4"], [3, 5, "bp5"], [2, 6, "bp6"], [5, 6, "bp7"], [3, 8, "bp8"],
+            [6, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [5, 5, "wp5"], [5, 7, "wp7"], [5, 8, "wp8"],
+            [8, 4, "wr1"], [6, 3, "wn1"], [7, 5, "wb1"], [6, 6, "wq1"], [8, 3, "wk1"], [7, 6, "wb2"], [5, 4, "wn2"], [8, 8, "wr2"]
+        ];
+        //var currentMoveIndex = 0;
+        chessBoard = document.getElementById("chessBoard");
+        // Initialize the chess board
+        function scillianChessBoard() {
+            var chessHTML = `<table>`;
+            for (var row = 1; row <= 8; row++) {
+                chessHTML += `<tr>`;
+                for (var col = 1; col <= 8; col++) {
+                    var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
+                    //if (row === 1) squareClass = "black-square"; // Make the bottom side black
                     var piece = getPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
@@ -145,7 +170,8 @@ You are a very structual player that wants to get a better position and likes to
         function nextMove() {
             if (currentMoveIndex < initialPositions.length - 1) {
                 currentMoveIndex++;
-                initChessBoard();
+                scillianChessBoard();
+               // initChessBoard();
             }
         }
         // Initialize the chess board on page load
