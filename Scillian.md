@@ -5,7 +5,6 @@ You are a very structual player that wants to get a better position and likes to
 ## Scilian Overview
 > There are many lines for the scilian this is just the main line that people use or think of when they think of the scilian opening in chess. Other lines and information are in youtube videos below. Read the tutorials and watch the videos to learn the other lines. And mabye there will be a puzzles part where you can test this knowledge. 
 
-<!DOCTYPE html>
 <html>
 <head>
     <title>Sicilian Opening Chess</title>
@@ -66,15 +65,13 @@ You are a very structual player that wants to get a better position and likes to
             "wp7": "♙",
             "wp8": "♙",
             "wr1": "♖",
-            "wr2": "♖",
             "wn1": "♘",
-            "wn2": "♘",
             "wb1": "♗",
-            "wb2": "♗",
             "wk1": "♔",
-            "wq1": "♕"
-        };
-        var blackpieces = {
+            "wq1": "♕",
+            "wp9": "♙",
+            "wp10": "♙",
+            "wp11": "♙",
             "bp1": "♟",
             "bp2": "♟",
             "bp3": "♟",
@@ -84,20 +81,31 @@ You are a very structual player that wants to get a better position and likes to
             "bp7": "♟",
             "bp8": "♟",
             "br1": "♜",
-            "br2": "♜",
             "bn1": "♞",
-            "bn2": "♞",
             "bb1": "♝",
-            "bb2": "♝",
             "bk1": "♚",
-            "bq1": "♛"
+            "bq1": "♛",
+            "bp9": "♟",
+            "bp10": "♟",
+            "bp11": "♟"
         };
         // Array of initial positions for the chess pieces
         var initialPositions = [
-            [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
-            [2, 1, "bp1"], [2, 2, "bp2"], [2, 3, "bp3"], [2, 4, "bp4"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [2, 8, "bp8"],
-            [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 5, "wp5"], [7, 6, "wp6"], [7, 7, "wp7"], [7, 8, "wp8"],
-            [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
+            [1, 2, "wn1"],
+            [2, 3, "bp3"],
+            [2, 5, "bp5"],
+            [2, 6, "bp6"],
+            [3, 2, "wp2"],
+            [3, 3, "wp3"],
+            [3, 4, "wp4"],
+            [3, 6, "wp6"],
+            [3, 7, "wp7"],
+            [3, 8, "wp8"],
+            [4, 3, "wp9"],
+            [4, 4, "bp4"],
+            [4, 5, "wp10"],
+            [5, 4, "bp11"],
+            [5, 5, "wp11"]
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
@@ -108,7 +116,6 @@ You are a very structual player that wants to get a better position and likes to
                 chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
-                    if (row === 1) squareClass = "black-square"; // Make the bottom side black
                     var piece = getPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
@@ -123,9 +130,6 @@ You are a very structual player that wants to get a better position and likes to
                 var position = initialPositions[i];
                 if (position[0] === row && position[1] === col) {
                     var piece = position[2];
-                    if (blackpieces.hasOwnProperty(piece)) {
-                        return blackpieces[piece];
-                    }
                     if (whitepieces.hasOwnProperty(piece)) {
                         return whitepieces[piece];
                     }
