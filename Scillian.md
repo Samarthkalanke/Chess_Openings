@@ -143,7 +143,7 @@ You are a very structual player that wants to get a better position and likes to
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
-        function getPieceIcon(row, col) {
+        function getScillianPieceIcon(row, col) {
             for (var i = 0; i < scillianPositions.length; i++) {
                 var position = scillianPositions[i];
                 if (position[0] === row && position[1] === col) {
@@ -160,7 +160,7 @@ You are a very structual player that wants to get a better position and likes to
             return "";
         }
          // Get the piece icon for a given position
-        function getScillianPieceIcon(row, col) {
+        function getPieceIcon(row, col) {
             for (var i = 0; i < initialPositions.length; i++) {
                 var position = initialPositions[i];
                 if (position[0] === row && position[1] === col) {
