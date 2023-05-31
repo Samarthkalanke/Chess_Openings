@@ -5,10 +5,9 @@ You are a very structual player that wants to get a better position and likes to
 ## Scilian Overview
 > There are many lines for the scilian this is just the main line that people use or think of when they think of the scilian opening in chess. Other lines and information are in youtube videos below. Read the tutorials and watch the videos to learn the other lines. And mabye there will be a puzzles part where you can test this knowledge. 
 
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Accelerated Dragon - Sicilian Opening Chess</title>
+    <title>Sicilian Opening Chess</title>
     <style>
         /* Define CSS styles for the chess board */
         .black {
@@ -19,6 +18,7 @@ You are a very structual player that wants to get a better position and likes to
         }
         .chess-board {
             display: flex;
+            flex-wrap: wrap;
             width: 400px;
             height: 400px;
         }
@@ -57,82 +57,59 @@ You are a very structual player that wants to get a better position and likes to
     <script>
         // Define the chess pieces icons
         var whitepieces = {
-            "wp1": "♙",
-            "wp2": "♙",
-            "wp3": "♙",
-            "wp4": "♙",
-            "wp5": "♙",
-            "wp6": "♙",
-            "wp7": "♙",
-            "wp8": "♙",
-            "wr1": "♖",
-            "wr2": "♖",
-            "wn1": "♘",
-            "wn2": "♘",
-            "wb1": "♗",
-            "wb2": "♗",
-            "wk1": "♔",
-            "wq1": "♕"
+            "P": "♙", "R": "♖", "N": "♘", "B": "♗", "Q": "♕", "K": "♔"
         };
         var blackpieces = {
-            "bp1": "♟",
-            "bp2": "♟",
-            "bp3": "♟",
-            "bp4": "♟",
-            "bp5": "♟",
-            "bp6": "♟",
-            "bp7": "♟",
-            "bp8": "♟",
-            "br1": "♜",
-            "br2": "♜",
-            "bn1": "♞",
-            "bn2": "♞",
-            "bb1": "♝",
-            "bb2": "♝",
-            "bk1": "♚",
-            "bq1": "♛"
+            "p": "♟", "r": "♜", "n": "♞", "b": "♝", "q": "♛", "k": "♚"
         };
-        // Array of initial positions for the chess pieces
-        var initialPositions = [
-            [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
-            [2, 1, "bp1"], [2, 2, "bp2"], [2, 3, "bp3"], [2, 4, "bp4"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [2, 8, "bp8"],
-            [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 5, "wp5"], [7, 6, "wp6"], [7, 7, "wp7"], [7, 8, "wp8"],
-            [8, 1, "wr1"], [8, 2, "wn1"], [8, 3, "wb1"], [8, 4, "wq1"], [8, 5, "wk1"], [8, 6, "wb2"], [8, 7, "wn2"], [8, 8, "wr2"]
+        // Array of moves in the Sicilian Defense
+        var moves = [
+            "e2e4", "c7c5",
+            "g1f3", "d7d6",
+            "d2d4", "g8f6",
+            "c2c4", "e7e6",
+            "b1c3", "a7a6",
+            "f1e2", "d8c7",
+            "e1g1", "e8g8",
+            "d1d2", "b8c6"
         ];
         var currentMoveIndex = 0;
         var chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
         function initChessBoard() {
-            var chessHTML = `<table>`;
-            for (var row = 1; row <= 8; row++) {
-                chessHTML += `<tr>`;
+            chessBoard.innerHTML = "";
+            var chessHTML = "";
+            for (var row = 8; row >= 1; row--) {
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
-                    if (row === 1) squareClass = "black-square"; // Make the bottom side black
                     var piece = getPieceIcon(row, col);
-                    chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
+                    chessHTML += `<div class="chess-square ${squareClass}">${piece}</div>`;
                 }
-                chessHTML += `</tr>`;
             }
-            chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
         function getPieceIcon(row, col) {
-            for (var i = 0; i < initialPositions.length; i++) {
-                var position = initialPositions[i];
-                if (position[0] === row && position[1] === col) {
-                    var piece = position[2];
-                    if (blackpieces.hasOwnProperty(piece)) {
-                        return blackpieces[piece];
-                    }
-                    if (whitepieces.hasOwnProperty(piece)) {
-                        return whitepieces[piece];
-                    }
-                    break;
-                }
+            var moveIndex = Math.floor(currentMoveIndex / 2);
+            if (row === getRowFromAlgebraic(moves[moveIndex].substring(2, 4)) &&
+                col === getColFromAlgebraic(moves[moveIndex].substring(2, 4))) {
+                return whitepieces.hasOwnProperty(moves[moveIndex][0]) ?
+                    whitepieces[moves[moveIndex][0]] : blackpieces[moves[moveIndex][0].toLowerCase()];
+            }
+            if (row === getRowFromAlgebraic(moves[moveIndex].substring(4, 6)) &&
+                col === getColFromAlgebraic(moves[moveIndex].substring(4, 6))) {
+                return whitepieces.hasOwnProperty(moves[moveIndex][1]) ?
+                    whitepieces[moves[moveIndex][1]] : blackpieces[moves[moveIndex][1].toLowerCase()];
             }
             return "";
+        }
+        // Convert algebraic notation to row index (1-8)
+        function getRowFromAlgebraic(algebraic) {
+            return 9 - parseInt(algebraic[1]);
+        }
+        // Convert algebraic notation to column index (1-8)
+        function getColFromAlgebraic(algebraic) {
+            return algebraic.charCodeAt(0) - 96;
         }
         // Go to the previous move
         function prevMove() {
@@ -143,7 +120,7 @@ You are a very structual player that wants to get a better position and likes to
         }
         // Go to the next move
         function nextMove() {
-            if (currentMoveIndex < initialPositions.length - 1) {
+            if (currentMoveIndex < moves.length * 2 - 1) {
                 currentMoveIndex++;
                 initChessBoard();
             }
@@ -153,5 +130,3 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
-
-
