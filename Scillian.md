@@ -31,7 +31,7 @@ You are a very structual player that wants to get a better position and likes to
             font-size: 30px;
         }
         .white-square {
-            background-color: #f0d9b5;
+            background-color: #3CB371;
         }
         .black-square {
             background-color: #b58863;
