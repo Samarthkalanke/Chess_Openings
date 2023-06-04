@@ -12,6 +12,7 @@
   </style>
 </head>
 <body>
+  <form method="POST">
   <h1>Quiz</h1>
   
   <div class="question">
@@ -22,7 +23,6 @@
       <input type="radio" name="q1" value="40"> Solid and Positional <br>
       <input type="radio" name="q1" value="20"> Flexible and Adaptable  <br>
       <input type="radio" name="q1" value="10"> Tactical and Dynamic <br>
-    </form>
   </div>
   
   <div class="question">
@@ -48,13 +48,13 @@
 
   <div class="question">
     <h3>Question 4:</h3>
-    <p>Which of the following pawn structures appeals to you the most?</p>
     <form>
       <input type="radio" name="q4" value="40"> Isolated pawn structure <br>
       <input type="radio" name="q4" value="30"> Pawn chains <br>
       <input type="radio" name="q4" value="20"> Pawn majorities <br>
       <input type="radio" name="q4" value="10"> Pawn islands <br>
     </form>
+
   </div>
 
   <div class="question">
@@ -67,10 +67,11 @@
   </div>
 
   <button name = "haha" id = 2> RandomButton </button>
-  <button onclick="calculateScore()">Submit</button>
+  <button type = "submit"onclick="calculateScore()">Submit</button>
   
   <h3 id="score"></h3>
-  
+  </form>
+
   <script>
     function calculateScore() {
       var score = 0;
@@ -100,11 +101,11 @@
         score += parseInt(q5Answer.value);
       }
       
-      document.getElementById('score').innerHTML = "Total Score: " + score + " points";
+      //document.getElementById('score').innerHTML = "Total Score: " + score + " points";
       
       var wasteButton = document.querySelector('[name="haha"]');
       wasteButton.id = score
-      var score2 = document.querySelector('[name="haha"]');;
+      var score2 = document.querySelector('[name="haha"]');
       document.getElementById('score').innerHTML = "Total Score: " + score2.id + " points (v 2.0)";
     }
   </script>
