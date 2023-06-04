@@ -116,6 +116,7 @@
     function checkScore() {
       // Get the score value from the input field
       var score = document.getElementByClassName("haha").id;
+      document.getElementById('score').innerHTML = "Total Score: " + score + " points (v 2.0)";
       // Get the button elements
       var button1 = document.getElementById("button1");
       button1.textContent = 'Ruy Lopez';
@@ -152,12 +153,6 @@
       link.appendChild(button);
       document.body.appendChild(link);
       //Second Button
-      // Reset the button styles
-      button1.style.display = "none";
-      button2.style.display = "none";
-      button3.style.display = "none";
-      button4.style.display = "none";
-      button5.style.display = "none";
       // Check the score range and show the corresponding button
       if (score >= 170) {
         button5.style.display = "block";
@@ -178,11 +173,11 @@
 
   <input type="number" id="score">
 
-  <button id="button1" style="display: none;">Button 1</button>
-  <button id="button2" style="display: none;">Button 2</button>
-  <button id="button3" style="display: none;">Button 3</button>
-  <button id="button4" style="display: none;">Button 4</button>
-  <button id="button5" style="display: none;">Button 5</button>
+  <button id="button1" style="display: inline;">Button 1</button>
+  <button id="button2" style="display: inline;">Button 2</button>
+  <button id="button3" style="display: inline;">Button 3</button>
+  <button id="button4" style="display: inline;">Button 4</button>
+  <button id="button5" style="display: inline;">Button 5</button>
 
   <button onclick="checkScore()">Check Score</button>
 </body>
