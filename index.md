@@ -115,10 +115,40 @@
       var score = document.getElementById("score").value;
       // Get the button elements
       var button1 = document.getElementById("button1");
+      button1.textContent = 'Ruy Lopez';
+      const link = document.createElement('a');
+      link.href = '/Chess_Openings/RuyLopez.html';
+      link.appendChild(button);
+      document.body.appendChild(link);
+      //Second Button
       var button2 = document.getElementById("button2");
+      button2.textContent = 'London';
+      const link = document.createElement('a');
+      link.href = '/Chess_Openings/London.html';
+      link.appendChild(button);
+      document.body.appendChild(link);
+      //Second Button
       var button3 = document.getElementById("button3");
+      button3.textContent = 'Kings Gambit';
+      const link = document.createElement('a');
+      link.href = '/Chess_Openings/KingsGambit.html';
+      link.appendChild(button);
+      document.body.appendChild(link);
+      //Second Button
       var button4 = document.getElementById("button4");
+      button4.textContent = 'Vienna';
+      const link = document.createElement('a');
+      link.href = '/Chess_Openings/Vienna.html';
+      link.appendChild(button);
+      document.body.appendChild(link);
+      //Second Button
       var button5 = document.getElementById("button5");
+      button5.textContent = 'Scotch';
+      const link = document.createElement('a');
+      link.href = '/Chess_Openings/Scotch.html';
+      link.appendChild(button);
+      document.body.appendChild(link);
+      //Second Button
       // Reset the button styles
       button1.style.display = "none";
       button2.style.display = "none";
