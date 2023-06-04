@@ -90,6 +90,16 @@
         score += parseInt(q3Answer.value);
       }
       
+      var q4Answer = document.querySelector('input[name="q4"]:checked');
+      if (q4Answer !== null) {
+        score += parseInt(q4Answer.value);
+      }
+      
+      var q5Answer = document.querySelector('input[name="q5"]:checked');
+      if (q5Answer !== null) {
+        score += parseInt(q5Answer.value);
+      }
+      
       document.getElementById('score').innerHTML = "Total Score: " + score + " points";
     }
   </script>
