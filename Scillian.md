@@ -196,3 +196,9 @@ You are a very structual player that wants to get a better position and likes to
     </script>
 </body>
 </html>
+
+## Scillian Tutorial 
+> # Youtube Vids(GothamChess and Others)
+    > Gotham Chess 10 min overview https://www.youtube.com/watch?v=qM4e7g2RukI
+    > Gotham Chess Beth Harmon stuff https://www.youtube.com/watch?v=65VWIFlc4C4
+    > Simplify Chess openings https://simplifychess.com/sicilian-defense/
