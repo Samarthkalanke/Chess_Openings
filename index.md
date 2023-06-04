@@ -159,16 +159,16 @@
       button4.style.display = "none";
       button5.style.display = "none";
       // Check the score range and show the corresponding button
-      if (score >= 90) {
-        button1.style.display = "block";
-      } else if (score >= 80) {
-        button2.style.display = "block";
-      } else if (score >= 70) {
-        button3.style.display = "block";
-      } else if (score >= 60) {
-        button4.style.display = "block";
-      } else {
+      if (score >= 170) {
         button5.style.display = "block";
+      } else if (score >= 150) {
+        button4.style.display = "block";
+      } else if (score >= 120) {
+        button3.style.display = "block";
+      } else if (score >= 100) {
+        button2.style.display = "block";
+      } else {
+        button1.style.display = "block";
       }
     }
   </script>
@@ -176,7 +176,6 @@
 <body>
   <h1>If-Else Statement Example</h1>
 
-  <label for="score">Enter your score:</label>
   <input type="number" id="score">
 
   <button id="button1" style="display: none;">Button 1</button>
