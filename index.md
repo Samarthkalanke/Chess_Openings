@@ -66,7 +66,7 @@
     </form>
   </div>
 
-  <button class = "haha" id = 2> RandomButton </button>
+  <button name = "haha" id = 2> RandomButton </button>
   <button onclick="calculateScore()">Submit</button>
   
   <h3 id="score"></h3>
@@ -102,9 +102,9 @@
       
       document.getElementById('score').innerHTML = "Total Score: " + score + " points";
       
-      var wasteButton = document.getElementByClassName('haha')
+      var wasteButton = document.querySelector('[name="haha"]');
       wasteButton.id = score
-      var score2 = document.getElementByClassName("haha");
+      var score2 = document.querySelector('[name="haha"]');;
       document.getElementById('score').innerHTML = "Total Score: " + score2.id + " points (v 2.0)";
     }
   </script>
@@ -117,7 +117,7 @@
   <script>
     function checkScore() {
       // Get the score value from the input field
-      var score = document.getElementByClassName("haha").id;
+      var score = document.querySelector('[name="haha"]').id;
       document.getElementById('score').innerHTML = "Total Score: " + score + " points (v 2.0)";
       // Get the button elements
       var button1 = document.getElementById("button1");
