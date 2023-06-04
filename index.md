@@ -104,6 +104,8 @@
       
       var wasteButton = document.getElementByClassName('haha')
       wasteButton.id = score
+      var score2 = document.getElementByClassName("haha");
+      document.getElementById('score').innerHTML = "Total Score: " + score2.id + " points (v 2.0)";
     }
   </script>
 </body>
@@ -170,8 +172,6 @@
 </head>
 <body>
   <h1>If-Else Statement Example</h1>
-
-  <input type="number" id="score">
 
   <button id="button1" style="display: inline;">Button 1</button>
   <button id="button2" style="display: inline;">Button 2</button>
