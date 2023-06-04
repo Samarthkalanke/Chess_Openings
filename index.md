@@ -50,10 +50,10 @@
     <h3>Question 4:</h3>
     <p>Which of the following pawn structures appeals to you the most?</p>
     <form>
-      <input type="radio" name="q2" value="40"> Isolated pawn structure <br>
-      <input type="radio" name="q2" value="30"> Pawn chains <br>
-      <input type="radio" name="q2" value="20"> Pawn majorities <br>
-      <input type="radio" name="q2" value="10"> Pawn islands <br>
+      <input type="radio" name="q4" value="40"> Isolated pawn structure <br>
+      <input type="radio" name="q4" value="30"> Pawn chains <br>
+      <input type="radio" name="q4" value="20"> Pawn majorities <br>
+      <input type="radio" name="q4" value="10"> Pawn islands <br>
     </form>
   </div>
 
@@ -61,8 +61,8 @@
     <h3>Question 5:</h3>
     <p>Do you have a preferred piece or setup that you like to play in the early stages of the game?</p>
     <form>
-      <input type="radio" name="q2" value="40"> I like to focus on a particular piece or setup and build my strategy around it.  <br>
-      <input type="radio" name="q2" value="30"> I'm comfortable with different setups and don't have a specific preference. <br>
+      <input type="radio" name="q5" value="40"> I like to focus on a particular piece or setup and build my strategy around it.  <br>
+      <input type="radio" name="q5" value="30"> I'm comfortable with different setups and don't have a specific preference. <br>
     </form>
   </div>
 
@@ -107,7 +107,7 @@
 </html> 
 
 <html>
-<head>
+<head>c
   <title>If-Else Statement Example</title>
   <script>
     function checkScore() {
