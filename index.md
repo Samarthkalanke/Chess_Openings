@@ -1,4 +1,4 @@
-c
+
 ## Quiz
 
 <!DOCTYPE html>
@@ -18,8 +18,8 @@ c
     <h3>Question 1:</h3>
     <p>How would you describe your playstyle?</p>
     <form>
-      <input type="radio" name="q1" value="40"> Aggressive and attacking <br>
-      <input type="radio" name="q1" value="30"> Solid and Positional <br>
+      <input type="radio" name="q1" value="30"> Aggressive and attacking <br>
+      <input type="radio" name="q1" value="40"> Solid and Positional <br>
       <input type="radio" name="q1" value="20"> Flexible and Adaptable  <br>
       <input type="radio" name="q1" value="10"> Tactical and Dynamic <br>
     </form>
