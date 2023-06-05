@@ -73,9 +73,8 @@
   </form>
 
   <script>
+    var score = 0;
     function calculateScore() {
-      var score = 0;
-      
       var q1Answer = document.querySelector('input[name="q1"]:checked');
       if (q1Answer !== null) {
         score += parseInt(q1Answer.value);
@@ -101,24 +100,9 @@
         score += parseInt(q5Answer.value);
       }
       
-      //document.getElementById('score').innerHTML = "Total Score: " + score + " points";
-      
-      var wasteButton = document.querySelector('[name="haha"]');
-      wasteButton.id = score
-      var score2 = document.querySelector('[name="haha"]');
-      document.getElementById('score').innerHTML = "Total Score: " + score2.id + " points (v 2.0)";
-    }
-  </script>
-</body>
-</html> 
-
-<html>
-<head>c
-  <title>If-Else Statement Example</title>
-  <script>
     function checkScore() {
       // Get the score value from the input field
-      var score = document.querySelector('[name="haha"]').id;
+      //var score = document.querySelector('[name="haha"]').id;
       document.getElementById('score').innerHTML = "Total Score: " + score + " points (v 2.0)";
       // Get the button elements
       var button1 = document.getElementById("button1");
@@ -169,9 +153,9 @@
         button1.style.display = "block";
       }
     }
+
+    }
   </script>
-</head>
-<body>
   <h1>If-Else Statement Example</h1>
 
   <button id="button1" style="display: inline;">Button 1</button>
