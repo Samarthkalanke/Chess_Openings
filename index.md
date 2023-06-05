@@ -72,7 +72,6 @@
   <h3 id="score"></h3>
    <button onclick="calculateScore()">Submit</button>
   
-  <h3 id="score"></h3>
   </form>
 
   <script>
