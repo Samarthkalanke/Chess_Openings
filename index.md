@@ -99,7 +99,9 @@
       if (q5Answer !== null) {
         score += parseInt(q5Answer.value);
       }
+    }
       
+    /*
     function checkScore() {
       // Get the score value from the input field
       //var score = document.querySelector('[name="haha"]').id;
@@ -153,8 +155,7 @@
         button1.style.display = "block";
       }
     }
-
-    }
+    */
   </script>
   <h1>If-Else Statement Example</h1>
 
