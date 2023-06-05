@@ -70,6 +70,9 @@
   <button onclick="calculateScore()">Submit</button>
   
   <h3 id="score"></h3>
+   <button onclick="calculateScore()">Submit</button>
+  
+  <h3 id="score"></h3>
   </form>
 
   <script>
@@ -100,8 +103,10 @@
         score += parseInt(q5Answer.value);
       }
     }
-      
   </script>
+</body>
+</html>
+
   <h1>If-Else Statement Example</h1>
 
   <button id="button1" style="display: inline;">Button 1</button>
