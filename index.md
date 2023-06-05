@@ -67,7 +67,7 @@
   </div>
 
   <button name = "haha" id = 2> RandomButton </button>
-  <button type = "submit"onclick="calculateScore()">Submit</button>
+  <button onclick="calculateScore()">Submit</button>
   
   <h3 id="score"></h3>
   </form>
