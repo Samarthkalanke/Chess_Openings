@@ -99,10 +99,8 @@
       if (q5Answer !== null) {
         score += parseInt(q5Answer.value);
       }
-      
-    
-
     }
+      
   </script>
   <h1>If-Else Statement Example</h1>
 
