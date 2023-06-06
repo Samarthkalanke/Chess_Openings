@@ -226,13 +226,13 @@
       td{
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 50px;
+        padding: 100px;
         color: #ffffff;
       }
       th{
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 50px;
+        padding: 100px;
         color: #000000;
         background-color: #dddddd;
       }
@@ -243,7 +243,7 @@
         background-color: #d1d3d1; /* Green */
         border: black;
         color: rgb(0, 0, 0);
-        padding: 30px 60px;
+        padding: 20px 40px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
