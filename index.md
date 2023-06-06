@@ -308,4 +308,4 @@
   </body>
   <script language = "JavaScript">
     var myFilms = [];
-    const url = "http://127.0.0.1:8086/api/films/";//getting url for API
+    const url = "http://127.0.0.1:8086";//getting url for API
