@@ -76,31 +76,32 @@
   <script>
     var score = 0;
     function calculateScore() {
-      alert("Entering Calculate Score") ;
+      alert("Entering Calculate Score q1") ;
       var q1Answer = document.querySelector('input[name="q1"]:checked');
       if (q1Answer !== null) {
         score += parseInt(q1Answer.value);
       }
-      
+      alert("Entering Calculate Score q2") ;
       var q2Answer = document.querySelector('input[name="q2"]:checked');
       if (q2Answer !== null) {
         score += parseInt(q2Answer.value);
       }
-      
+      alert("Entering Calculate Score q3") ;
       var q3Answer = document.querySelector('input[name="q3"]:checked');
       if (q3Answer !== null) {
         score += parseInt(q3Answer.value);
       }
-      
+      alert("Entering Calculate Score q4") ;
       var q4Answer = document.querySelector('input[name="q4"]:checked');
       if (q4Answer !== null) {
         score += parseInt(q4Answer.value);
       }
-      
+      alert("Entering Calculate Score q5") ;
       var q5Answer = document.querySelector('input[name="q5"]:checked');
       if (q5Answer !== null) {
         score += parseInt(q5Answer.value);
       }
+      alert("Entering Calculate Score end") ;
     }
   </script>
 </body>
