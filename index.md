@@ -179,7 +179,7 @@
   <button name="haha" id="2"> RandomButton </button>
   
   <h3 id="score"></h3>
-   <button onclick="calculateScore()">Submit</button>
+   <button onclick=calculateScore()>Submit</button>
   
   </form>
 
