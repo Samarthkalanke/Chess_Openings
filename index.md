@@ -207,22 +207,7 @@
       if (q5Answer !== null) {
         score += parseInt(q5Answer.value);
       }
-      if (score > 170){
-        categorey = "RuyLopez";
-      }
-      else if (score > 150){
-        categorey = "London"
-      }
-      else if (score > 120){
-        categorey = "KingsGambit"
-      }
-      else if (score > 100){
-        categorey = "Vienna"
-      }
-      else (score > 80){
-        categorey = "Scotch"
-      }
-      document.getElementById("score").textContent = "Assigned Opening: " + category + " | Score: " + score;
+      document.getElementById("score").textContent = "Score: " + score;
     }
   </script>
 </body>
