@@ -67,7 +67,6 @@
   </div>
 
   <button name = "haha" id = 2> RandomButton </button>
-  <button onclick="calculateScore()">Submit</button>
   
   <h3 id="score"></h3>
    <button onclick="calculateScore()">Submit</button>
@@ -77,6 +76,7 @@
   <script>
     var score = 0;
     function calculateScore() {
+      alert("Entering Calculate Score")
       var q1Answer = document.querySelector('input[name="q1"]:checked');
       if (q1Answer !== null) {
         score += parseInt(q1Answer.value);
