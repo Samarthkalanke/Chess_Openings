@@ -123,7 +123,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="/Chess_Openings/style.css">
   <title>Quiz</title>
   <style>
     .question {
