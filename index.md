@@ -132,7 +132,7 @@
   </style>
 </head>
 <body>
-  <form method="POST">
+  <form>
   <h1>Quiz</h1>
   
   <div class="question">
@@ -176,53 +176,36 @@
     <input type="radio" name="q5" value="30"> I'm comfortable with different setups and don't have a specific preference. <br>
   </div>
 
-  <button name="haha" id="2"> RandomButton </button>
-  
   <h3 id="score"></h3>
-   <button onclick=calculateScore()>Submit</button>
+  <button onclick="calculateScore()">Submit</button>
   
   </form>
 
   <script>
-    var score = 0;
     function calculateScore() {
-      alert("Entering Calculate Score q1");
+      var score = 0;
       var q1Answer = document.querySelector('input[name="q1"]:checked');
       if (q1Answer !== null) {
         score += parseInt(q1Answer.value);
       }
-      alert("Entering Calculate Score q2");
       var q2Answer = document.querySelector('input[name="q2"]:checked');
       if (q2Answer !== null) {
         score += parseInt(q2Answer.value);
       }
-      alert("Entering Calculate Score q3");
       var q3Answer = document.querySelector('input[name="q3"]:checked');
       if (q3Answer !== null) {
         score += parseInt(q3Answer.value);
       }
-      alert("Entering Calculate Score q4");
       var q4Answer = document.querySelector('input[name="q4"]:checked');
       if (q4Answer !== null) {
         score += parseInt(q4Answer.value);
       }
-      alert("Entering Calculate Score q5");
       var q5Answer = document.querySelector('input[name="q5"]:checked');
       if (q5Answer !== null) {
         score += parseInt(q5Answer.value);
       }
-      alert("Entering Calculate Score end");
+      document.getElementById("score").textContent = "Score: " + score;
     }
   </script>
-
-  <h1>If-Else Statement Example</h1>
-
-  <button id="button1" style="display: inline;">Button 1</button>
-  <button id="button2" style="display: inline;">Button 2</button>
-  <button id="button3" style="display: inline;">Button 3</button>
-  <button id="button4" style="display: inline;">Button 4</button>
-  <button id="button5" style="display: inline;">Button 5</button>
-
-  <button onclick="checkScore()">Check Score</button>
 </body>
 </html>
