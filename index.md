@@ -221,18 +221,18 @@
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
-        width: 100%;
+        width: 10%;
       }
       td{
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 10px;
+        padding: 50px;
         color: #ffffff;
       }
       th{
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 10px;
+        padding: 50px;
         color: #000000;
         background-color: #dddddd;
       }
@@ -243,7 +243,7 @@
         background-color: #d1d3d1; /* Green */
         border: black;
         color: rgb(0, 0, 0);
-        padding: 15px 30px;
+        padding: 30px 60px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
