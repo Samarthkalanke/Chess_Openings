@@ -212,3 +212,116 @@
   </script>
 </body>
 </html>
+
+
+<!doctype html>
+<html>
+  <head>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td{
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+        color: #ffffff;
+      }
+      th{
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 10px;
+        color: #000000;
+        background-color: #dddddd;
+      }
+      tr:nth-child(even) {
+        background-color: #000000;
+      }
+      .button {/* formatting for buttons */
+        background-color: #d1d3d1; /* Green */
+        border: black;
+        color: rgb(0, 0, 0);
+        padding: 15px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        transition-duration: 0.4s;
+      }
+      .button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+      }
+      h6 {
+        font-size: 200%;
+        color: white
+      }
+      input {/* input box formatting */
+        width: 40%;
+        height: 5%;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 4px;
+        background-color: #d1d3d1
+      }
+      header {
+        position: relative;
+      }
+      body {
+        position: relative;
+      }
+    label {
+      color: #dddddd;
+    }
+    </style>
+    <title>Developing Frontend and Backend</title>
+      <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Films API</a>
+      <ul>
+        <li><a href="/" class="">Home</a></li>
+        <li><a href="Exercises">Exercises</a></li>
+        <li><a href="/films.html">Films</a></li>
+        <li><a href="Cities">Cities</a></li>
+      </ul>
+    </header>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <form action="/action_page.php">
+    <label for="name">Name:</label>
+    <input type="text" id="Name"><br><br>
+    <label for="Score">Score:</label>
+    <input type="number" id="Score"><br><br>
+  </form>
+   <p><button class="button" onclick= postFilms()>Add your list</button></p>
+  <br>
+  <label for="newname">Name of Film Continued:</label>
+  <input type="text" id="Newname"><br><br>
+  <label for="newepcount">Number of Episodes Watched:</label>
+  <input type="number" id="Newepcount"><br><br>
+  <label for="neweplist">Episodes Watched(Separated by commas):</label>
+  <input type="text" id="neweplist"><br><br>
+  <p><button class="button" onclick= updateFilms()>Update your list</button></p>
+  <br>
+  <label for="delname">Name of Name:</label>
+  <input type="text" id="Delname"><br><br>
+  <p><button class="button" onclick= deleteHelper()>Delete a entry</button></p>
+  <br>
+  <p><button class="button" onclick= deleteFilms('-')>Delete All the Films!</button></p>
+  <br>
+  <table id = "Chess Score">
+    <tr>
+      <th>Name</th>
+      <th>Score</th>
+    </tr>
+  </table>
+  </body>
+  <script language = "JavaScript">
+    var myFilms = [];
+    const url = "http://127.0.0.1:8086/api/films/";//getting url for API
