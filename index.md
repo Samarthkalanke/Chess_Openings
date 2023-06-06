@@ -221,18 +221,18 @@
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
-        width: 10%;
+        width: 100%;
       }
       td{
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 100px;
+        padding: 10px;
         color: #ffffff;
       }
       th{
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 100px;
+        padding: 10px;
         color: #000000;
         background-color: #dddddd;
       }
@@ -243,7 +243,7 @@
         background-color: #d1d3d1; /* Green */
         border: black;
         color: rgb(0, 0, 0);
-        padding: 20px 40px;
+        padding: 15px 30px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -308,4 +308,4 @@
   </body>
   <script language = "JavaScript">
     var myFilms = [];
-    const url = "http://127.0.0.1:8086";//getting url for API
+    const url = "http://127.0.0.1:8086/api/films/";//getting url for API
