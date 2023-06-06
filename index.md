@@ -127,7 +127,7 @@
   <title>Quiz</title>
   <style>
     .question {
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
   </style>
 </head>
@@ -177,12 +177,14 @@
   </div>
 
   <h3 id="score"></h3>
-  <button onclick="calculateScore()">Submit</button>
+  <button onclick="calculateScore(event)">Submit</button>
   
   </form>
 
   <script>
-    function calculateScore() {
+    function calculateScore(event) {
+      event.preventDefault(); // Prevent form submission
+      
       var score = 0;
       var q1Answer = document.querySelector('input[name="q1"]:checked');
       if (q1Answer !== null) {
