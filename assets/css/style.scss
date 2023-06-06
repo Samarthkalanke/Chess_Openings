@@ -1,5 +1,13 @@
 ---
 ---
+body {
+  background-color: #f2f2f2; /* Set the background color to a light gray */
+}
+
+h1 {
+  font-family: Arial, sans-serif; /* Set the font to Arial or a sans-serif font */
+}
+
 
 @import "{{ site.theme }}";
 
