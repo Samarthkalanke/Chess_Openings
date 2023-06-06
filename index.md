@@ -76,7 +76,7 @@
   <script>
     var score = 0;
     function calculateScore() {
-      alert("Entering Calculate Score")
+      alert("Entering Calculate Score") ;
       var q1Answer = document.querySelector('input[name="q1"]:checked');
       if (q1Answer !== null) {
         score += parseInt(q1Answer.value);
