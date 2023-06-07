@@ -53,7 +53,6 @@ You are a very structual player that wants to get a better position and likes to
 <body>
     <div id="chessBoard"></div>
     <div class="arrow-buttons">
-        <button class="arrow-button" onclick="prevMove()">&lt;</button>
         <button class="arrow-button" onclick="nextMove()">&gt;</button>
     </div>
     <script>
