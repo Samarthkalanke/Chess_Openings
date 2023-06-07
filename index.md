@@ -216,183 +216,176 @@
 
 <!doctype html>
 <html>
-  <head>
-    <style>
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
-      td{
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 10px;
-        color: #ffffff;
-      }
-      th{
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 10px;
-        color: #000000;
-        background-color: #dddddd;
-      }
-      tr:nth-child(even) {
-        background-color: #000000;
-      }
-      .button {/* formatting for buttons */
-        background-color: #d1d3d1; /* Green */
-        border: black;
-        color: rgb(0, 0, 0);
-        padding: 15px 30px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 24px;
-        transition-duration: 0.4s;
-      }
-      .button:hover {
-        background-color: #4CAF50; /* Green */
-        color: white;
-      }
-      h6 {
-        font-size: 200%;
-        color: white
-      }
-      input {/* input box formatting */
-        width: 40%;
-        height: 5%;
-        border: 2px solid rgb(0, 0, 0);
-        border-radius: 4px;
-        background-color: #d1d3d1
-      }
-      header {
-        position: relative;
-      }
-      body {
-        position: relative;
-      }
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 10px;
+      color: #ffffff;
+    }
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 10px;
+      color: #000000;
+      background-color: #dddddd;
+    }
+    tr:nth-child(even) {
+      background-color: #000000;
+    }
+    .button {
+      /* formatting for buttons */
+      background-color: #d1d3d1;
+      /* Green */
+      border: black;
+      color: rgb(0, 0, 0);
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 24px;
+      transition-duration: 0.4s;
+    }
+    .button:hover {
+      background-color: #4CAF50;
+      /* Green */
+      color: white;
+    }
+    h6 {
+      font-size: 200%;
+      color: white;
+    }
+    input {
+      /* input box formatting */
+      width: 40%;
+      height: 5%;
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 4px;
+      background-color: #d1d3d1;
+    }
+    header {
+      position: relative;
+    }
+    body {
+      position: relative;
+    }
     label {
       color: #dddddd;
     }
-    </style>
-    <title>Chess Quiz score store</title>
-      <link rel="stylesheet" type="text/css" href="index.css">
-  </head>
-  <body>
+  </style>
+  <title>Chess Quiz score store</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
   <br>
   <form action="/action_page.php">
     <label for="name">Name:</label>
     <input type="text" id="Name"><br><br>
     <label for="score">Score:</label>
-    <input type="number" id="score"><br><br>
+    <input type="number" id="Score"><br><br>
   </form>
   <p><button class="button" onclick="postChess()">Add your score</button></p>
   <label for="delname">Name:</label>
   <input type="text" id="Delname"><br><br>
-  <p><button class="button" onclick="deleteHelper()">Delete a entry</button></p>
+  <p><button class="button" onclick="deleteHelper()">Delete an entry</button></p>
   <br>
-  <p><button class="button" onclick="deleteChess('-')">Delete All entrys</button></p>
+  <p><button class="button" onclick="deleteChess('-')">Delete All entries</button></p>
   <br>
-  <table id = "Chess Quiz score store">
+  <table id="Chess">
     <tr>
       <th>Name</th>
       <th>Score</th>
     </tr>
   </table>
-  </body>
-  <script language = "JavaScript">
-    var myChess = [];
-    const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";//getting url for API
-    const post_url = url+"create"//different urls for create, read, and delete functionality
-    const delete_url = url+"delete/";
-    const update_url = url+"update";
-    const get_options = {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'omit', // include, *same-origin, omit
-      headers: { 
-         'Content-Type': 'application/json'                
-      },
-    }; 
-    function deleteHelper(){
-      deleteChess(document.getElementById('Delname').value);
-    }
-    function postChess(){//function to add a new country to the API, excecuted when a user types a country into the text box and hits the check button
-      const options = {
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";
+      const post_url = url + "create";
+      const delete_url = url + "delete/";
+      const get_options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      };
+
+      function deleteHelper() {
+        deleteChess(document.getElementById('Delname').value);
+      }
+
+      function postChess() {
+        const options = {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              name: document.getElementById("Name").value,
-              score: document.getElementById("Score").value,
+            name: document.getElementById("Name").value,
+            score: document.getElementById("Score").value,
           })
-      }
-      fetch(post_url, options)
-        .then(response => {
-            if(response.status !== 200){
-                return;
+        };
+
+        fetch(post_url, options)
+          .then(response => {
+            if (response.status !== 200) {
+              console.error("Failed to add the score.");
+              return;
             }
-            response.json().then(data=>{
-                fetchChess()
-            })
-        })
+            response.json().then(data => {
+              fetchChess();
+            });
+          });
       }
-    function deleteChess(name){//method to delete countries from the API when program is all finished
-          const options = {
-              method: 'DELETE'
-          }
-          const full_url = delete_url+name
-          fetch(full_url, options)
-              .then(response => {
-                  if(response.status !== 200){
-                      return;
-                  }
-                  response.json().then(data=>{
-                      fetchChess()
-                  })
-              })
-    }
-    function fetchChess(){//Fetch list of countries from API to print at the end and compare when a new country to add to see if it's already been guessed
-          //console.log("test")
-          for(let i = document.getElementById("Chess").rows.length-1; i > 0; i--){
-            document.getElementById("Chess").deleterow(i);
-          }
-          fetch(url, get_options)
-              .then(response => {
-                  if(response.status !== 200){
-                      return;
-                  }
-                  response.json().then(data=>{
-                      //myChess = []
-                      for(const row of data){
-                        let newarray = [row.name,row.score];
-                        let myrow = document.getElementById("Chess").insertRow(-1);
-                        let mytrailer = document.createElement("iframe");
-                        //<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        //document.write("ghbsrhbvhugshoh");
-                        mytrailer.setAttribute("height","300");
-                        mytrailer.setAttribute("width","400");
-                        mytrailer.setAttribute("src",convertToEmbedUrl(row.trailer));
-                        mytrailer.setAttribute("frameborder","0");
-                        mytrailer.setAttribute("allow","accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-                        mytrailer.setAttribute("allowfullscreen",true);
-                        myrow.insertCell(0).innerHTML = row.name;
-                        myrow.insertCell(1).innerHTML = row.score;
-                        myrow.insertCell(2).appendChild(mytrailer);
-                        //myChess.push(newarray);
-                        //document.write(myChess.length)
-                      }
-                  })
-              })     
-    }
-    fetchChess();
-    //document.write(myChess.length)
-    //for(let i = 0; i < myChess.length; i++){
-    //}
-    //document.write(myChess.length);
 
+      function deleteChess(name) {
+        const options = {
+          method: 'DELETE'
+        };
+        const full_url = delete_url + name;
 
-   </script>
+        fetch(full_url, options)
+          .then(response => {
+            if (response.status !== 200) {
+              console.error("Failed to delete the entry.");
+              return;
+            }
+            response.json().then(data => {
+              fetchChess();
+            });
+          });
+      }
+
+      function fetchChess() {
+        const chessTable = document.getElementById("Chess");
+        while (chessTable.rows.length > 1) {
+          chessTable.deleteRow(-1);
+        }
+
+        fetch(url, get_options)
+          .then(response => {
+            if (response.status !== 200) {
+              console.error("Failed to fetch chess scores.");
+              return;
+            }
+            response.json().then(data => {
+              data.forEach(row => {
+                const newRow = chessTable.insertRow(-1);
+                newRow.insertCell(0).innerHTML = row.name;
+                newRow.insertCell(1).innerHTML = row.score;
+              });
+            });
+          });
+      }
+
+      fetchChess();
+    });
+  </script>
+</body>
 </html>
