@@ -275,7 +275,7 @@
       color: #dddddd;
     }
     </style>
-    <title>Developing Frontend and Backend</title>
+    <title>Chess Quiz score store</title>
       <link rel="stylesheet" type="text/css" href="index.css">
   </head>
   <body>
@@ -287,19 +287,17 @@
   <form action="/action_page.php">
     <label for="name">Name:</label>
     <input type="text" id="Name"><br><br>
-    <label for="Score">Score:</label>
-    <input type="number" id="Score"><br><br>
+    <label for="score">Score:</label>
+    <input type="number" id="score"><br><br>
   </form>
-   <p><button class="button" onclick="postFilms()">Add your list</button></p>
-  <br>
-  <br>
-  <label for="delname">Name of Name:</label>
+  <p><button class="button" onclick= postFilms()>Add a Film You Watched!</button></p>
+  <label for="delname">Name:</label>
   <input type="text" id="Delname"><br><br>
-  <p><button class="button" onclick="deleteHelper()">Delete a entry</button></p>
+  <p><button class="button" onclick= deleteHelper()>Delete a entry</button></p>
   <br>
-  <p><button class="button" onclick="deleteFilms('-')">Delete All the Films!</button></p>
+  <p><button class="button" onclick= deleteFilms('-')>Delete All entrys</button></p>
   <br>
-  <table id = "Chess Score">
+  <table id = "Chess Quiz score store">
     <tr>
       <th>Name</th>
       <th>Score</th>
@@ -308,4 +306,122 @@
   </body>
   <script language = "JavaScript">
     var myFilms = [];
-    const url = "http://127.0.0.1:8086/api/films/";//getting url for API
+    const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";//getting url for API
+    const post_url = url+"create"//different urls for create, read, and delete functionality
+    const delete_url = url+"delete/";
+    const update_url = url+"update";
+    const get_options = {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: { 
+         'Content-Type': 'application/json'                
+      },
+    function deleteHelper(){
+      deleteFilms(document.getElementById('Delname').value);
+    }
+    function postFilms(){//function to add a new country to the API, excecuted when a user types a country into the text box and hits the check button
+      const options = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              name: document.getElementById("Name").value,
+              score: document.getElementById("Score").value,
+          })
+      }
+      fetch(post_url, options)
+        .then(response => {
+            if(response.status !== 200){
+                return;
+            }
+            response.json().then(data=>{
+                fetchFilms()
+            })
+        })
+      }
+    function deleteFilms(name){//method to delete countries from the API when program is all finished
+          const options = {
+              method: 'DELETE'
+          }
+          const full_url = delete_url+name
+          fetch(full_url, options)
+              .then(response => {
+                  if(response.status !== 200){
+                      return;
+                  }
+                  response.json().then(data=>{
+                      fetchFilms()
+                  })
+              })
+    }
+    function updateFilms(){//method to delete countries from the API when program is all finished
+      const options = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: document.getElementById("Newname").value,
+            epcount: document.getElementById("Newepcount").value,
+            eps: document.getElementById("Neweplist").value,
+        })
+      }
+      const full_url = update_url
+      fetch(full_url, options)
+          .then(response => {
+              if(response.status !== 200){
+                  return;
+              }
+              response.json().then(data=>{
+                  fetchFilms()
+              })
+          })
+}
+    function fetchFilms(){//Fetch list of countries from API to print at the end and compare when a new country to add to see if it's already been guessed
+          //console.log("test")
+          for(let i = document.getElementById("Films").rows.length-1; i > 0; i--){
+            document.getElementById("Films").deleterow(i);
+          }
+          fetch(url, get_options)
+              .then(response => {
+                  if(response.status !== 200){
+                      return;
+                  }
+                  response.json().then(data=>{
+                      //myFilms = []
+                      for(const row of data){
+                        let newarray = [row.name,row.score];
+                        let myrow = document.getElementById("Films").insertRow(-1);
+                        let mytrailer = document.createElement("iframe");
+                        //<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        //document.write("ghbsrhbvhugshoh");
+                        mytrailer.setAttribute("height","300");
+                        mytrailer.setAttribute("width","400");
+                        mytrailer.setAttribute("src",convertToEmbedUrl(row.trailer));
+                        mytrailer.setAttribute("frameborder","0");
+                        mytrailer.setAttribute("allow","accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+                        mytrailer.setAttribute("allowfullscreen",true);
+                        myrow.insertCell(0).innerHTML = row.name;
+                        myrow.insertCell(1).innerHTML = row.year;
+                        myrow.insertCell(2).innerHTML = row.language;
+                        myrow.insertCell(3).innerHTML = row.epcount;
+                        myrow.insertCell(4).innerHTML = row.eplist;
+                        myrow.insertCell(5).appendChild(mytrailer);
+                        //myFilms.push(newarray);
+                        //document.write(myFilms.length)
+                      }
+                  })
+              })     
+    }
+    fetchFilms();
+    //document.write(myFilms.length)
+    //for(let i = 0; i < myFilms.length; i++){
+    //}
+    //document.write(myFilms.length);
+
+    
+   </script>
+</html>
