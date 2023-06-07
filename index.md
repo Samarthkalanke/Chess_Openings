@@ -290,7 +290,7 @@
     <label for="score">Score:</label>
     <input type="number" id="score"><br><br>
   </form>
-  <p><button class="button" onclick="postFilms()">Add a Film You Watched!</button></p>
+  <p><button class="button" onclick="postFilms()">Add your score</button></p>
   <label for="delname">Name:</label>
   <input type="text" id="Delname"><br><br>
   <p><button class="button" onclick="deleteHelper()">Delete a entry</button></p>
@@ -318,6 +318,7 @@
       headers: { 
          'Content-Type': 'application/json'                
       },
+    }; 
     function deleteHelper(){
       deleteFilms(document.getElementById('Delname').value);
     }
