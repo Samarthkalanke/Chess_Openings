@@ -118,8 +118,8 @@ You are a very structual player that wants to get a better position and likes to
             chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
-        // Array of scillian positions for the chess pieces
-        var scillianPositions = [
+        // Array of Scandinavian positions for the chess pieces
+        var ScandinavianPositions = [
             [1, 4, "br1"], [5, 3, "bn1"], [2, 4, "bq1"], [1, 3, "bk1"], [1, 6, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
             [2, 1, "bp1"], [2, 2, "bp2"], [2, 3, "bp3"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [2, 8, "bp8"],
             [5, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [7, 4, "wp4"], [7, 6, "wp6"], [7, 7, "wp7"], [6, 8, "wp8"],
@@ -128,14 +128,14 @@ You are a very structual player that wants to get a better position and likes to
         //var currentMoveIndex = 0;
         chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
-        function scillianChessBoard() {
+        function ScandinavianChessBoard() {
             var chessHTML = `<table>`;
             for (var row = 1; row <= 8; row++) {
                 chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     //if (row === 1) squareClass = "black-square"; // Make the bottom side black
-                    var piece = getScillianPieceIcon(row, col);
+                    var piece = getScandinavianPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
                 chessHTML += `</tr>`;
@@ -144,9 +144,9 @@ You are a very structual player that wants to get a better position and likes to
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
-        function getScillianPieceIcon(row, col) {
-            for (var i = 0; i < scillianPositions.length; i++) {
-                var position = scillianPositions[i];
+        function getScandinavianPieceIcon(row, col) {
+            for (var i = 0; i < ScandinavianPositions.length; i++) {
+                var position = ScandinavianPositions[i];
                 if (position[0] === row && position[1] === col) {
                     var piece = position[2];
                     if (blackpieces.hasOwnProperty(piece)) {
@@ -188,7 +188,7 @@ You are a very structual player that wants to get a better position and likes to
         function nextMove() {
            // if (currentMoveIndex < initialPositions.length - 1) {
            //     currentMoveIndex++;
-                scillianChessBoard();
+                ScandinavianChessBoard();
                // initChessBoard();
            // }
         }

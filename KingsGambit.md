@@ -2,15 +2,15 @@
 If you got this point value on the test this is where you belong, the quiz showed that this is the opening that you should study for black. 
 You are a very structual player that wants to get a better position and likes to read about openings alot. You like to play against higher than average elo players and like to study chess openings also this is my personal favorite so I officially love you and GothamChess is your daddy!! 
 
-## Scilian Overview
+## Kings Gambit Overview
 > There are many lines for the scilian this is just the main line that people use or think of when they think of the scilian opening in chess. Other lines and information are in youtube videos below. Read the tutorials and watch the videos to learn the other lines. And mabye there will be a puzzles part where you can test this knowledge. 
 
-## Scilian Main line
+## Kings Gambit Main line
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sicilian Opening Chess</title>
+    <title>Kings Gambit Opening Chess</title>
     <style>
         /* Define CSS styles for the chess board */
         .black {
@@ -118,8 +118,8 @@ You are a very structual player that wants to get a better position and likes to
             chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
-        // Array of scillian positions for the chess pieces
-        var scillianPositions = [
+        // Array of KingsGambit positions for the chess pieces
+        var KingsGambitPositions = [
             [1, 1, "br1"], [3, 3, "bn1"], [1, 3, "bb1"], [1, 4, "bq1"], [1, 5, "bk1"], [2, 7, "bb2"], [1, 7, "bn2"], [1, 8, "br2"],
             [2, 1, "bp1"], [2, 2, "bp2"], [2, 3, "bp3"], [3, 4, "bp4"], [5, 6, "bp5"], [2, 6, "bp6"], [4, 7, "bp7"], [3, 8, "bp8"],
             [7, 1, "wp1"], [7, 2, "wp2"], [6, 3, "wp3"], [5, 4, "wp4"], [5, 5, "wp5"], [7, 7, "wp7"], [5, 8, "wp8"],
@@ -128,14 +128,14 @@ You are a very structual player that wants to get a better position and likes to
         //var currentMoveIndex = 0;
         chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
-        function scillianChessBoard() {
+        function KingsGambitChessBoard() {
             var chessHTML = `<table>`;
             for (var row = 1; row <= 8; row++) {
                 chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     //if (row === 1) squareClass = "black-square"; // Make the bottom side black
-                    var piece = getScillianPieceIcon(row, col);
+                    var piece = getKingsGambitPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
                 chessHTML += `</tr>`;
@@ -144,9 +144,9 @@ You are a very structual player that wants to get a better position and likes to
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
-        function getScillianPieceIcon(row, col) {
-            for (var i = 0; i < scillianPositions.length; i++) {
-                var position = scillianPositions[i];
+        function getKingsGambitPieceIcon(row, col) {
+            for (var i = 0; i < KingsGambitPositions.length; i++) {
+                var position = KingsGambitPositions[i];
                 if (position[0] === row && position[1] === col) {
                     var piece = position[2];
                     if (blackpieces.hasOwnProperty(piece)) {
@@ -188,7 +188,7 @@ You are a very structual player that wants to get a better position and likes to
         function nextMove() {
            // if (currentMoveIndex < initialPositions.length - 1) {
            //     currentMoveIndex++;
-                scillianChessBoard();
+                KingsGambitChessBoard();
                // initChessBoard();
            // }
         }
@@ -200,7 +200,7 @@ You are a very structual player that wants to get a better position and likes to
 
 
 
-## Scillian Tutorial 
+## KingsGambit Tutorial 
 > # Youtube Vids(GothamChess and Others)
     > Gotham Chess 10 min overview https://www.youtube.com/watch?v=qM4e7g2RukI
     > Gotham Chess Beth Harmon stuff https://www.youtube.com/watch?v=65VWIFlc4C4

@@ -118,8 +118,8 @@ You are a very structual player that wants to get a better position and likes to
             chessHTML += `</table>`;
             chessBoard.innerHTML = chessHTML;
         }
-        // Array of scillian positions for the chess pieces
-        var scillianPositions = [
+        // Array of Caro positions for the chess pieces
+        var CaroPositions = [
             [1, 1, "br1"], [1, 2, "bn1"], [1, 3, "bb1"], [3, 2, "bq1"], [1, 5, "bk1"], [2, 8, "bb2"], [3, 6, "bn2"], [1, 8, "br2"],
             [2, 1, "bp1"], [2, 2, "bp2"], [3, 3, "bp3"], [4, 4, "bp4"], [2, 5, "bp5"], [2, 6, "bp6"], [2, 7, "bp7"], [3, 8, "bp8"],
             [7, 1, "wp1"], [7, 2, "wp2"], [7, 3, "wp3"], [5, 4, "wp4"], [3, 5, "wp5"], [6, 6, "wp6"], [4, 7, "wp7"], [4, 8, "wp8"],
@@ -128,14 +128,14 @@ You are a very structual player that wants to get a better position and likes to
         //var currentMoveIndex = 0;
         chessBoard = document.getElementById("chessBoard");
         // Initialize the chess board
-        function scillianChessBoard() {
+        function CaroChessBoard() {
             var chessHTML = `<table>`;
             for (var row = 1; row <= 8; row++) {
                 chessHTML += `<tr>`;
                 for (var col = 1; col <= 8; col++) {
                     var squareClass = (row + col) % 2 === 0 ? "white-square" : "black-square";
                     //if (row === 1) squareClass = "black-square"; // Make the bottom side black
-                    var piece = getScillianPieceIcon(row, col);
+                    var piece = getCaroPieceIcon(row, col);
                     chessHTML += `<td><div class="chess-square ${squareClass}" id="r${row}c${col}">${piece}</div></td>`;
                 }
                 chessHTML += `</tr>`;
@@ -144,9 +144,9 @@ You are a very structual player that wants to get a better position and likes to
             chessBoard.innerHTML = chessHTML;
         }
         // Get the piece icon for a given position
-        function getScillianPieceIcon(row, col) {
-            for (var i = 0; i < scillianPositions.length; i++) {
-                var position = scillianPositions[i];
+        function getCaroPieceIcon(row, col) {
+            for (var i = 0; i < CaroPositions.length; i++) {
+                var position = CaroPositions[i];
                 if (position[0] === row && position[1] === col) {
                     var piece = position[2];
                     if (blackpieces.hasOwnProperty(piece)) {
@@ -188,7 +188,7 @@ You are a very structual player that wants to get a better position and likes to
         function nextMove() {
            // if (currentMoveIndex < initialPositions.length - 1) {
            //     currentMoveIndex++;
-                scillianChessBoard();
+                CaroChessBoard();
                // initChessBoard();
            // }
         }
