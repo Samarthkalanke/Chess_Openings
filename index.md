@@ -234,66 +234,7 @@
 <html>
 <head>
   <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    td {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 10px;
-      color: #ffffff;
-    }
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 10px;
-      color: #000000;
-      background-color: #dddddd;
-    }
-    tr:nth-child(even) {
-      background-color: #000000;
-    }
-    .button {
-      /* formatting for buttons */
-      background-color: #d1d3d1;
-      /* Green */
-      border: black;
-      color: rgb(0, 0, 0);
-      padding: 15px 30px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 24px;
-      transition-duration: 0.4s;
-    }
-    .button:hover {
-      background-color: #4CAF50;
-      /* Green */
-      color: white;
-    }
-    h6 {
-      font-size: 200%;
-      color: white;
-    }
-    input {
-      /* input box formatting */
-      width: 40%;
-      height: 5%;
-      border: 2px solid rgb(0, 0, 0);
-      border-radius: 4px;
-      background-color: #d1d3d1;
-    }
-    header {
-      position: relative;
-    }
-    body {
-      position: relative;
-    }
-    label {
-      color: #dddddd;
-    }
+    /* CSS styles... */
   </style>
   <title>Chess Quiz score store</title>
   <link rel="stylesheet" type="text/css" href="index.css">
@@ -301,13 +242,13 @@
 <body>
   <br>
   <form action="/action_page.php">
-    <label for="name">Name:</label>
+    <label for="Name">Name:</label>
     <input type="text" id="Name"><br><br>
-    <label for="score">Score:</label>
+    <label for="Score">Score:</label>
     <input type="number" id="Score"><br><br>
   </form>
   <p><button class="button" onclick="postChess()">Add your score</button></p>
-  <label for="delname">Name:</label>
+  <label for="Delname">Name:</label>
   <input type="text" id="Delname"><br><br>
   <p><button class="button" onclick="deleteHelper()">Delete an entry</button></p>
   <br>
