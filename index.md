@@ -213,6 +213,22 @@
 </body>
 </html>
 
+<!doctype html>
+<html>
+<head>
+  <title>Rating Buttons</title>
+</head>
+<body>
+  <h1>Click on the button respective to your score</h1>
+  <button onclick="window.location.href='/Chess_Openings/RuyLopez.html'">+170</button>
+  <button onclick="window.location.href='/Chess_Openings/London.html'">170-150</button>
+  <button onclick="window.location.href='/Chess_Openings/KingsGambit.html'">150-120</button>
+  <button onclick="window.location.href='/Chess_Openings/Vienna.html'">120-100</button>
+  <button onclick="window.location.href='/Chess_Openings/Scotch.html'">100-80</button>
+</body>
+</html>
+
+
 
 <!doctype html>
 <html>
