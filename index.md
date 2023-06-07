@@ -280,22 +280,18 @@
   </head>
   <body>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <form action="/action_page.php">
     <label for="name">Name:</label>
     <input type="text" id="Name"><br><br>
     <label for="score">Score:</label>
     <input type="number" id="score"><br><br>
   </form>
-  <p><button class="button" onclick="postFilms()">Add your score</button></p>
+  <p><button class="button" onclick="postChess()">Add your score</button></p>
   <label for="delname">Name:</label>
   <input type="text" id="Delname"><br><br>
   <p><button class="button" onclick="deleteHelper()">Delete a entry</button></p>
   <br>
-  <p><button class="button" onclick="deleteFilms('-')">Delete All entrys</button></p>
+  <p><button class="button" onclick="deleteChess('-')">Delete All entrys</button></p>
   <br>
   <table id = "Chess Quiz score store">
     <tr>
@@ -305,7 +301,7 @@
   </table>
   </body>
   <script language = "JavaScript">
-    var myFilms = [];
+    var myChess = [];
     const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";//getting url for API
     const post_url = url+"create"//different urls for create, read, and delete functionality
     const delete_url = url+"delete/";
@@ -320,9 +316,9 @@
       },
     }; 
     function deleteHelper(){
-      deleteFilms(document.getElementById('Delname').value);
+      deleteChess(document.getElementById('Delname').value);
     }
-    function postFilms(){//function to add a new country to the API, excecuted when a user types a country into the text box and hits the check button
+    function postChess(){//function to add a new country to the API, excecuted when a user types a country into the text box and hits the check button
       const options = {
           method: 'POST',
           headers: {
@@ -339,11 +335,11 @@
                 return;
             }
             response.json().then(data=>{
-                fetchFilms()
+                fetchChess()
             })
         })
       }
-    function deleteFilms(name){//method to delete countries from the API when program is all finished
+    function deleteChess(name){//method to delete countries from the API when program is all finished
           const options = {
               method: 'DELETE'
           }
@@ -354,37 +350,14 @@
                       return;
                   }
                   response.json().then(data=>{
-                      fetchFilms()
+                      fetchChess()
                   })
               })
     }
-    function updateFilms(){//method to delete countries from the API when program is all finished
-      const options = {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: document.getElementById("Newname").value,
-            epcount: document.getElementById("Newepcount").value,
-            eps: document.getElementById("Neweplist").value,
-        })
-      }
-      const full_url = update_url
-      fetch(full_url, options)
-          .then(response => {
-              if(response.status !== 200){
-                  return;
-              }
-              response.json().then(data=>{
-                  fetchFilms()
-              })
-          })
-}
-    function fetchFilms(){//Fetch list of countries from API to print at the end and compare when a new country to add to see if it's already been guessed
+    function fetchChess(){//Fetch list of countries from API to print at the end and compare when a new country to add to see if it's already been guessed
           //console.log("test")
-          for(let i = document.getElementById("Films").rows.length-1; i > 0; i--){
-            document.getElementById("Films").deleterow(i);
+          for(let i = document.getElementById("Chess").rows.length-1; i > 0; i--){
+            document.getElementById("Chess").deleterow(i);
           }
           fetch(url, get_options)
               .then(response => {
@@ -392,10 +365,10 @@
                       return;
                   }
                   response.json().then(data=>{
-                      //myFilms = []
+                      //myChess = []
                       for(const row of data){
                         let newarray = [row.name,row.score];
-                        let myrow = document.getElementById("Films").insertRow(-1);
+                        let myrow = document.getElementById("Chess").insertRow(-1);
                         let mytrailer = document.createElement("iframe");
                         //<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         //document.write("ghbsrhbvhugshoh");
@@ -406,22 +379,19 @@
                         mytrailer.setAttribute("allow","accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
                         mytrailer.setAttribute("allowfullscreen",true);
                         myrow.insertCell(0).innerHTML = row.name;
-                        myrow.insertCell(1).innerHTML = row.year;
-                        myrow.insertCell(2).innerHTML = row.language;
-                        myrow.insertCell(3).innerHTML = row.epcount;
-                        myrow.insertCell(4).innerHTML = row.eplist;
+                        myrow.insertCell(1).innerHTML = row.score;
                         myrow.insertCell(5).appendChild(mytrailer);
-                        //myFilms.push(newarray);
-                        //document.write(myFilms.length)
+                        //myChess.push(newarray);
+                        //document.write(myChess.length)
                       }
                   })
               })     
     }
-    fetchFilms();
-    //document.write(myFilms.length)
-    //for(let i = 0; i < myFilms.length; i++){
+    fetchChess();
+    //document.write(myChess.length)
+    //for(let i = 0; i < myChess.length; i++){
     //}
-    //document.write(myFilms.length);
+    //document.write(myChess.length);
 
 
    </script>
