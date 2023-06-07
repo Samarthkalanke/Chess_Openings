@@ -204,3 +204,14 @@ You are a very structual player that wants to get a better position and likes to
     > Gotham Chess 10 min overview https://www.youtube.com/watch?v=qM4e7g2RukI
     > Gotham Chess Beth Harmon stuff https://www.youtube.com/watch?v=65VWIFlc4C4
     > Simplify Chess openings https://simplifychess.com/sicilian-defense/
+
+    <!doctype html>
+<html>
+<head>
+  <title>Opening for black</title>
+</head>
+<body>
+  <h1>Click on this button when you are done learning</h1>
+  <button onclick="window.location.href='/Chess_Openings/Scillian.html'">Opening for Black</button>
+</body>
+</html>
