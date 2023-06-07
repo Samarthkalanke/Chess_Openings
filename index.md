@@ -380,7 +380,7 @@
                         mytrailer.setAttribute("allowfullscreen",true);
                         myrow.insertCell(0).innerHTML = row.name;
                         myrow.insertCell(1).innerHTML = row.score;
-                        myrow.insertCell(5).appendChild(mytrailer);
+                        myrow.insertCell(2).appendChild(mytrailer);
                         //myChess.push(newarray);
                         //document.write(myChess.length)
                       }
