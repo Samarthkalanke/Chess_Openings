@@ -1,62 +1,25 @@
-## The Reunion Project
+## Monkey Curry's Chess Openings learnings
 
-Usage
+# Presented by Samarth Kalanke 
 
-1. Midnight Theme. Use the GitHub Pages [Midnight Theme](https://github.com/pages-themes/midnight/blob/master/README.md) as a resource.  This project started with customization of _layouts/default.html from the Midnight Theme.  If you wanted to use a different [GitHub Pages Themes](https://pages.github.com/themes/), you would similarly change `_layouts/default.html` from repo used to support that theme.  Observe comment at top of _layouts/default.html ...
+# Run Instructions and Deployed Projects 
 
-```html
-<!-- 
-  _layouts/default.html
-  customization to original Midnight theme 
-  found through GitHub Pages Themes
- -->
-```
+[Here](https://samarthkalanke.github.io/Chess_Openings/) is the deployed website for students to view and interact. [Here](https://chessopeningbackendkun.duckdns.org) is the deployed backend server that contains the database used by the frontend website.
 
-2. Preview Site (Option A) - [Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll).  This instruction provides instructions for ruby `Gemfile`,`bundle install`.  As an addition add `.gitignore` to avoid seeing build files in commit.   After pre-requisites run this command to obtain prompt for web server ...
+To run the website online, simply go to the links replied. 
 
-```bash
-bundle exec jekyll serve -H 0.0.0.0 -P 4001 # -H and -P are optional
-```
-3. Install Nix and run using a Nix shell (Option B).  This should be quicker than Docker and more reliable than previous.
+Running repositories locally is different. To run this repository locally with Jekyll, [test your site locally with](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll). To run [this](https://github.com/Samarthkalanke/ChessOpeningsBackendkun) backend server, simply run the main.py file to test your backend locally with Flask.
 
-```bash
-sh <(curl -L https://nixos.org/nix/install) # installs nix requires root password
 
-# restart terminal as shell is updated, then cd ~/vscode/project-dir assuming you have it cloned
+# The Project and how it works 
 
-nix-shell # start shell, aka nix os virtual environment
-code . # activate VSCode in current directory
+This project is meant to find what is the best two chess openings for the user and teaches them how to study it. The project starts at the index.md where the quiz at the top determines the score of the user. The score is a variable that is stored in the quiz that is added on based on which answer you select for each question. Each answer per question has its own point value. The higher the score value the harder the opening you are sent to, for example if you get anywhere between 200-170 you are advised to click the +170 button at the buttonw which will take you to learn the Ruy Lopez which is one of the hardest openings for white to learn. There are 5 total buttons taking you to the different pages of the white openings corresponding to the score ranges that are dennoted on the button itself. A lower value will prompt you into learning a easier opening. Inside this page there is a little overview of the opening and down there is a chess board where if you click the > button it shows one of the many positions that can transpose from the opening that still stays in the opening logic. This gives the user a understanding of the opening and below are videos and a website to help further explain the positon and the goal of the position that you are trying to get from that position. The transparent pieces are always the white ones and the filled out ones are the black pieces. On the bottome it takes you to the respective opening for black that is on the same difficulty level to learn. It is a simular page but the chess board will yeild a different position when clicked. Also on the index.md there is a chart where you can enter your score value and your name and it stores it on the deployed backend just so that your score will always be there. It will also rank it and compare it to other users who took the quiz so you can know where they are at. You are also able to delete your take if you want to redo the quiz with a delete function being present as well. 
 
-# open vscode terminal
 
-bundle install # only need to run once, first time. If this command doesn't work, delete your github repo, and reclone it. 
+# Organization 
 
-bundle exec jekyll serve # run server
+I tried my best to organize it as much as possible by myself and there was a lot of things that I had to learn along the way. I did want to make one more functionality that I have got started on working but I didn't end up doing for the sake of this submission but I will end up continuing in the future because I truely enjoyed working on this. It was going to be a mini quiz where possible positions in each opening page gets randomized and you have to play the right move to get the question right. It gives you a random position that is in the opening logic and next you have to play the next best move. I have spent around 40 hours on this although most of it came from using resoureces around me and using the tools that are presented to me because these functionalities were a lot harder to make than I expected. 
 
-bundle exec jekyll serve --livereload --force_polling # if you are on WSL/windows and the above command doesn't work, try this.
 
-```
 
-4. Preview Site (Option C) - [GitHub Pages Ruby Gem](https://github.com/github/pages-gem) has additional information on making a local server.  Ruby requirements are the same: `Gemfile`,`bundle install`.   This README looks like basis of FastPages `make server` as it uses Docker and shows how to setup a `Makefile`.
-
-5. Customizing style (CSS).  This project uses `/assets/css/style.scss` as the location to customize your CSS. To avoid warnings in VSCode make sure you install `SCSS IntelliSense` plugin.  To understand default style, make sure you ***Preview Site*** and refer to build generated `_site/assets/css/style.css` (this is worth 1000 lectures).  For the reunion site `gallery.md` uses custom style from `assets/css/style.css` to support 3 images per row.  Observe file and position of import and custom CSS, order is important as clarified in Midnight Theme readme. ...
-
-```css
----
----
-
-@import "{{ site.theme }}";
-
-/* "row style" is flexible size and aligns pictures in center */
-.row {
-    align-items: center;
-    display: flex;
-  }
-  
-  /* "column style" is one-third of the width with padding */
-  .column {
-    flex: 33.33%;
-    padding: 5px;
-  }
-```
 
