@@ -263,86 +263,87 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";
-      const post_url = url + "create";
-      const delete_url = url + "delete/";
-      const get_options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      };
+  const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";
+  const post_url = url + "create";
+  const delete_url = url + "delete/";
+  const get_options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
 
-      function deleteHelper() {
-        deleteChess(document.getElementById('Delname').value);
-      }
+  function deleteHelper() {
+    deleteChess(document.getElementById('Delname').value);
+  }
 
-      function postChess() {
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: document.getElementById("Name").value,
-            score: document.getElementById("Score").value,
-          })
-        };
+  function postChess() {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: document.getElementById("Name").value,
+        score: document.getElementById("Score").value,
+      })
+    };
 
-        fetch(post_url, options)
-          .then(response => {
-            if (response.status !== 200) {
-              console.error("Failed to add the score.");
-              return;
-            }
-            response.json().then(data => {
-              fetchChess();
-            });
-          });
-      }
-
-      function deleteChess(name) {
-        const options = {
-          method: 'DELETE'
-        };
-        const full_url = delete_url + name;
-
-        fetch(full_url, options)
-          .then(response => {
-            if (response.status !== 200) {
-              console.error("Failed to delete the entry.");
-              return;
-            }
-            response.json().then(data => {
-              fetchChess();
-            });
-          });
-      }
-
-      function fetchChess() {
-        const chessTable = document.getElementById("Chess");
-        while (chessTable.rows.length > 1) {
-          chessTable.deleteRow(-1);
+    fetch(post_url, options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.error("Failed to add the score.");
+          return;
         }
+        response.json().then(data => {
+          fetchChess();
+        });
+      });
+  }
 
-        fetch(url, get_options)
-          .then(response => {
-            if (response.status !== 200) {
-              console.error("Failed to fetch chess scores.");
-              return;
-            }
-            response.json().then(data => {
-              data.forEach(row => {
-                const newRow = chessTable.insertRow(-1);
-                newRow.insertCell(0).innerHTML = row.name;
-                newRow.insertCell(1).innerHTML = row.score;
-              });
-            });
+  function deleteChess(name) {
+    const options = {
+      method: 'DELETE'
+    };
+    const full_url = delete_url + name;
+
+    fetch(full_url, options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.error("Failed to delete the entry.");
+          return;
+        }
+        response.json().then(data => {
+          fetchChess();
+        });
+      });
+  }
+
+  function fetchChess() {
+    const chessTable = document.getElementById("Chess");
+    while (chessTable.rows.length > 1) {
+      chessTable.deleteRow(-1);
+    }
+
+    fetch(url, get_options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.error("Failed to fetch chess scores.");
+          return;
+        }
+        response.json().then(data => {
+          data.forEach(row => {
+            const newRow = chessTable.insertRow(-1);
+            newRow.insertCell(0).innerHTML = row.name;
+            newRow.insertCell(1).innerHTML = row.score;
           });
-      }
+        });
+      });
+  }
 
-      fetchChess();
-    });
+  fetchChess();
+});
+
   </script>
 </body>
 </html>
