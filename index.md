@@ -242,22 +242,17 @@
 <body>
   <br>
   <form action="/action_page.php">
-<form autocomplete="off" id="form">
-    <input class="day" type="date" name="date" id="date-input" required>
-    <input class="event" type="text" name="title" placeholder="Event (e.g. Picnic)" id="event-input" required>
-    <input type="submit" onclick="addEvent()" value="Add An Event" class="add-event-button">
+    <label for="Name">Name:</label>
+    <input type="text" id="Name"><br><br>
+    <label for="Score">Score:</label>
+    <input type="number" id="Score"><br><br>
   </form>
-  <form autocomplete="off" id="form1">
-    <input class="day" type="date" name="date" id="date-of-event-to-update-input" required>
-    <input class="event" type="text" name="title" placeholder="Original Event Name (e.g. Picnic)" id="event-to-update-input" required>
-    <input class="event" type="text" name="title" placeholder="New Event Name (e.g. Party)" id="new-event-input" required>
-    <input type="submit" onclick="editEvent()" value="Edit An Event" class="edit-event-button">
-  </form>
-  <form autocomplete="off" id="form2">
-    <input class="day" type="date" name="date" id="date-of-event-to-delete-input" required>
-    <input class="event" type="text" name="title" placeholder="Event (e.g. Picnic)" id="event-to-delete-input" required>
-    <input type="submit" onclick="removeEvent()" value="Remove An Event" class="remove-event-button">
-  </form>
+  <p><button class="button" onclick="postChess()">Add your score</button></p>
+  <label for="Delname">Name:</label>
+  <input type="text" id="Delname"><br><br>
+  <p><button class="button" onclick="deleteHelper()">Delete an entry</button></p>
+  <br>
+  <p><button class="button" onclick="deleteChess('-')">Delete All entries</button></p>
   <br>
   <table id="Chess">
     <tr>
@@ -268,86 +263,87 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";
-      const post_url = url + "create";
-      const delete_url = url + "delete/";
-      const get_options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      };
+  const url = "https://chessopeningbackendkun.duckdns.org/api/chess/";
+  const post_url = url + "create";
+  const delete_url = url + "delete/";
+  const get_options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
 
-      function removeEvent() {
-        deleteChess(document.getElementById('event-to-delete-input').value);
-      }
+  function deleteHelper() {
+    deleteChess(document.getElementById('Delname').value);
+  }
 
-      function addEvent() {
-        const options = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: document.getElementById("event-input").value,
-            score: document.getElementById("date-input").value,
-          })
-        };
+  function postChess() {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: document.getElementById("Name").value,
+        score: document.getElementById("Score").value,
+      })
+    };
 
-        fetch(post_url, options)
-          .then(response => {
-            if (response.status !== 200) {
-              console.error("Failed to add the score.");
-              return;
-            }
-            response.json().then(data => {
-              fetchChess();
-            });
-          });
-      }
-
-      function deleteChess(name) {
-        const options = {
-          method: 'DELETE'
-        };
-        const full_url = delete_url + name;
-
-        fetch(full_url, options)
-          .then(response => {
-            if (response.status !== 200) {
-              console.error("Failed to delete the entry.");
-              return;
-            }
-            response.json().then(data => {
-              fetchChess();
-            });
-          });
-      }
-
-      function fetchChess() {
-        const chessTable = document.getElementById("Chess");
-        while (chessTable.rows.length > 1) {
-          chessTable.deleteRow(-1);
+    fetch(post_url, options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.error("Failed to add the score.");
+          return;
         }
+        response.json().then(data => {
+          fetchChess();
+        });
+      });
+  }
 
-        fetch(url, get_options)
-          .then(response => {
-            if (response.status !== 200) {
-              console.error("Failed to fetch chess scores.");
-              return;
-            }
-            response.json().then(data => {
-              data.forEach(row => {
-                const newRow = chessTable.insertRow(-1);
-                newRow.insertCell(0).innerHTML = row.name;
-                newRow.insertCell(1).innerHTML = row.score;
-              });
-            });
+  function deleteChess(name) {
+    const options = {
+      method: 'DELETE'
+    };
+    const full_url = delete_url + name;
+
+    fetch(full_url, options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.error("Failed to delete the entry.");
+          return;
+        }
+        response.json().then(data => {
+          fetchChess();
+        });
+      });
+  }
+
+  function fetchChess() {
+    const chessTable = document.getElementById("Chess");
+    while (chessTable.rows.length > 1) {
+      chessTable.deleteRow(-1);
+    }
+
+    fetch(url, get_options)
+      .then(response => {
+        if (response.status !== 200) {
+          console.error("Failed to fetch chess scores.");
+          return;
+        }
+        response.json().then(data => {
+          data.forEach(row => {
+            const newRow = chessTable.insertRow(-1);
+            newRow.insertCell(0).innerHTML = row.name;
+            newRow.insertCell(1).innerHTML = row.score;
           });
-      }
+        });
+      });
+  }
 
-      fetchChess();
-    });
+  fetchChess();
+});
+
   </script>
 </body>
 </html>
