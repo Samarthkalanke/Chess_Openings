@@ -67,17 +67,6 @@
   padding: 10px 20px;
   cursor:pointer;
 }
-.refresh-button {
-  background-color: purple !important;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  cursor:pointer;
-}
-.refresh-container{
-  text-align: center;
-  margin-top: 20px;
-}
 </style>
 </head>
 <body>
@@ -470,11 +459,6 @@
       <input type="submit" onclick="clearEvents()" value="Clear All Events" class="clear-events-button">
     </form>
   </div>
-  <div class="refresh-container">
-    <form autocomplete="off" id="form3">
-      <input type="submit" onclick="refresh()" value="Refresh Page (if needed)" class="refresh-button">
-    </form>
-  </div>
 <script>
 function addEvent(){
     const eventDate = document.getElementById("date-input").value
@@ -581,9 +565,6 @@ function clearEvents(){
     localStorage.clear();
     alert("All events have been cleared.");
   }
-}
-function refresh(){
-  location.reload();
 }
 // prepare fetch PUT options, clones with JS Spread Operator (...)
 /* const put_options = {...options, method: 'PUT'}; // clones and replaces method
