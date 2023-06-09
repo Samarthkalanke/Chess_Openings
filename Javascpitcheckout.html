@@ -53,13 +53,6 @@
   padding: 10px 20px;
   cursor:pointer;
 }
-.edit-event-button {
-  background-color: rgb(102, 102, 6) !important;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  cursor:pointer;
-}
 .remove-event-button {
   background-color: red !important;
   color: white;
@@ -437,17 +430,10 @@
 
 
 
-9:18
 <form autocomplete="off" id="form">
     <input class = "day" type = "date" name = "date" id = "date-input" required>
     <input class="event" type="text" name="title" placeholder="Event (e.g. Picnic)" id = "event-input" required>
     <input type ="submit" onclick = "addEvent()" value="Add An Event" class = "add-event-button">
-  </form>
-  <form autocomplete="off" id="form1">
-    <input class = "day" type = "date" name = "date" id = "date-of-event-to-update-input" required>
-    <input class="event" type="text" name="title" placeholder="Original Event Name (e.g. Picnic)" id = "event-to-update-input" required>
-    <input class="event" type="text" name="title" placeholder="New Event Name (e.g. Party)" id = "new-event-input" required>
-    <input type ="submit" onclick = "editEvent()" value="Edit An Event" class = "edit-event-button">
   </form>
    <form autocomplete="off" id="form2">
     <input class = "day" type = "date" name = "date" id = "date-of-event-to-delete-input" required>
@@ -525,34 +511,6 @@ function removeEvent() {
   getEvents();
 }
 
-function editEvent() {
-  const eventDate = document.getElementById("date-of-event-to-update-input").value;
-  const originalEventDesc = document.getElementById("event-to-update-input").value;
-  const newEventDesc = document.getElementById("new-event-input").value;
-  if (!eventDate || !originalEventDesc || !newEventDesc) {
-    return;
-  }
-  const dateKey = eventDate.substring(5);
-  let currentData = JSON.parse(localStorage.getItem(dateKey));
-  if (!currentData) {
-    return;
-  }
-  // Find the index of the event in the events array
-  const eventIndex = currentData.findIndex((event) => event === originalEventDesc);
-  if (eventIndex === -1) {
-    return;
-  }
-  // Update the event description at the corresponding index
-  currentData[eventIndex] = newEventDesc;
-  // Update the events array in the local storage with the updated events
-  localStorage.setItem(dateKey, JSON.stringify(currentData));
-  // Clear input fields
-  document.getElementById("date-of-event-to-update-input").value = "";
-  document.getElementById("event-to-update-input").value = "";
-  document.getElementById("new-event-input").value = "";
-  // Update the displayed events
-  getEvents();
-}
 function clearEvents(){
   if (localStorage.length === 0) {
     alert("There are no events to clear.");
